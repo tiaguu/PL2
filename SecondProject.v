@@ -163,7 +163,22 @@ Inductive ceval : com -> state -> result -> Prop :=
       beval st b = true ->
       st =[ c ]=> RError ->
       st =[ while b do c end ]=> RError
-  (* TODO *)
+  | E_AssertTrue : forall st b,
+      beval st b = true ->
+      st =[ assert b ]=> RNormal st
+  | E_AssertFalse : forall st b,
+      beval st b = false ->
+      st =[ assert b ]=> RError
+  | E_Assume : forall st b, 
+      beval st b = true ->
+      st =[ assume b ]=> RNormal st
+  | E_ChoiceA : forall st st' c1 c2,
+      st =[ c1 ]=> st' ->
+      st =[ c1 !! c2 ]=> st'
+  | E_ChoiceB : forall st st' c1 c2,
+      st =[ c2 ]=> st' ->
+      st =[ c1 !! c2]=> st'
+
 
 where "st '=[' c ']=>' r" := (ceval c st r).
 
@@ -199,14 +214,21 @@ Theorem assume_false: forall P Q b,
        (forall st, beval st b = false) ->
        ({{P}} assume b {{Q}}).
 Proof.
-  (* TODO *)
+  intros. unfold hoare_triple. eexists. apply conj.
+    - inversion H0. reflexivity.
+    - specialize (H st). inversion H0. rewrite H3 in H; discriminate.
 Qed.
 
 Theorem assert_implies_assume : forall P b Q,
      ({{P}} assert b {{Q}})
   -> ({{P}} assume b {{Q}}).
 Proof.
-  (* TODO *)
+  intros. unfold hoare_triple. eexists. split.
+    - inversion H0; try reflexivity.
+    - inversion H0. unfold hoare_triple in H. specialize (H st r). 
+      destruct H5; destruct H; try assumption.
+      + apply E_AssertTrue. assumption.
+      + inversion H; rewrite H5 in H0. inversion H0; apply H6. 
 Qed.
 
 
@@ -347,9 +369,15 @@ Qed.
 (* ================================================================= *)
 
 Theorem hoare_assert: forall P (b: bexp),
-  (*TODO: Hoare proof rule for [assert b] *)
+  (* Hoare proof rule for [assert b] *)
+    {{ P /\ b}} assert b {{ P }}.
 Proof.
-  (* TODO *)
+  unfold hoare_triple. intros. inversion H.
+    + subst. exists st. split; try reflexivity.
+      - apply H0.
+    + subst. exists st. split; try reflexivity.
+      - inversion H0. inversion H2. rewrite H3 in H2. discriminate.
+      - apply H0.
 Qed.
 
 (* ================================================================= *)
@@ -357,9 +385,11 @@ Qed.
 (* ================================================================= *)
 
 Theorem hoare_assume: forall (P:Assertion) (b:bexp),
-  (*TODO: Hoare proof rule for [assume b] *)
+  (* Hoare proof rule for [assume b] *)
+    {{ b -> P }} assume b {{ P }}.
 Proof.
-  (* TODO *)
+  unfold hoare_triple. intros. eexists. split. inversion H; try reflexivity.
+    - apply H0. inversion H. assumption.
 Qed.
 
 
@@ -367,10 +397,21 @@ Qed.
 (* EXERCISE 3.3: State and prove [hoare_choice]                      *)
 (* ================================================================= *)
 
-Theorem hoare_choice' : forall P c1 c2 Q,
-  (*TODO: Hoare proof rule for [c1 !! c2] *)
+Theorem hoare_choice' : forall P1 P2 c1 c2 Q1 Q2,
+  (* Hoare proof rule for [c1 !! c2] *)
+    {{ P1 }} c1 {{ Q1 }} ->
+    {{ P2 }} c2 {{ Q2 }} ->
+    {{ P1 /\ P2}} c1 !! c2 {{ Q1 \/ Q2 }}.
 Proof.
-  (* TODO *)
+  intros P1 c1 Q1 P2 c2 Q2 IH1 IH2. 
+  unfold hoare_triple in *.
+  intros st r H HO. inversion H; subst.
+    - apply (IH1 st) in H4.
+      + destruct H4. inversion H0. inversion H1. exists x. split; try reflexivity. auto.
+      + apply HO.
+    - apply (IH2 st) in H4.
+      + destruct H4. inversion H0. inversion H1. exists x. split; try reflexivity. auto.
+      + apply HO.
 Qed.
 
 
@@ -386,7 +427,12 @@ Example assert_assume_example:
   X := X + 1
   {{ X = 42 }}.  
 Proof.
-  (* TODO *)
+  eapply hoare_seq.
+    - apply hoare_asgn.
+    - eapply hoare_consequence_pre.
+      + apply hoare_assume.
+      + unfold "->>". intros. simpl. simpl in H. simpl in H0. inversion H.
+        rewrite H2. rewrite H2 in H0. discriminate.
 Qed.
 
 
