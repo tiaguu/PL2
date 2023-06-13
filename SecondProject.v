@@ -689,7 +689,7 @@ Inductive dcom : Type :=
   (* assert {{ P }} {{ Q }} *)
 | DCAssume (P : Assertion) (Q : Assertion)
   (* assume {{ P }} {{ Q }} *)
-| DCNonDetChoice (d1 d2 : dcom) (Q : Assertion)
+| DCNonDetChoice (d1 d2 : dcom) (Q : Assertion).
   (* d1 !! d2 {{ Q }} *)
 
 (** To provide the initial precondition that goes at the very top of a
@@ -738,11 +738,11 @@ Notation "'assert' {{ P }} {{ Q }}"
 Notation "'assume' {{ P }} {{ Q }}"
       := (DCAssume P Q)
            (in custom com at level 0, P constr, Q constr) : dcom_scope.
-Notation "d1 '!!' d2 {{ Q }}"
+Notation "d1 '!!' d2 '{{' Q '}}'"
       := (DCNonDetChoice d1 d2 Q)
-           (in custom com at level 89, right associativity,
-            d1 custom com at level 99, d2 custom com at level 99,
-            Q constr) : dcom_scope.
+           (in custom com at level 92, right associativity,
+            Q constr at level 93) : dcom_scope.
+
 
 Local Open Scope dcom_scope.
 
@@ -782,7 +782,7 @@ Fixpoint extract (d : dcom) : com :=
   (* TODO *)
   | DCAssert _ _       => CSkip
   | DCAssume _ _       => CSkip
-  | DCNonDetChoice d1 d2 _ => CChoice (extract d1) (extract d2)
+  | DCNonDetChoice d1 d2 _ => CNonDetChoice (extract d1) (extract d2)
   end.
 
 Definition extract_dec (dec : decorated) : com :=
@@ -986,9 +986,9 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
   | DCPost d Q =>
       verification_conditions P d
       /\ (post d ->> Q)
-  | DCAssert P Q =>
+  | DCAssert P' Q =>
       (P ->> Q)
-  | DCAssume P Q =>
+  | DCAssume P' Q =>
       (P ->> Q)
   | DCNonDetChoice d1 d2 Q =>
       (P ->> Q) /\ verification_conditions Q d1 /\ verification_conditions Q d2
