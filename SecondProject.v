@@ -987,11 +987,12 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
       verification_conditions P d
       /\ (post d ->> Q)
   | DCAssert P' Q =>
-      (P ->> Q)
+      (P' ->> Q)
   | DCAssume P' Q =>
-      (P ->> Q)
+      (P ->> P')
+      /\ (P' ->> Q)
   | DCNonDetChoice d1 d2 Q =>
-      (P ->> Q) /\ verification_conditions Q d1 /\ verification_conditions Q d2
+      (P ->> Q) /\ (verification_conditions Q d1 \/ verification_conditions Q d2)
   end.
 
 (** The key theorem states that [verification_conditions] does its job
