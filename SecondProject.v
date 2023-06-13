@@ -200,14 +200,14 @@ Theorem assume_false: forall P Q b,
        ({{P}} assume b {{Q}}).
 Proof.
   (* TODO *)
-Qed.
+Admitted.
 
 Theorem assert_implies_assume : forall P b Q,
      ({{P}} assert b {{Q}})
   -> ({{P}} assume b {{Q}}).
 Proof.
   (* TODO *)
-Qed.
+Admitted.
 
 
 (* ################################################################# *)
@@ -346,33 +346,38 @@ Qed.
 (* EXERCISE 3.1: State and prove [hoare_assert]                      *)
 (* ================================================================= *)
 
+(**
 Theorem hoare_assert: forall P (b: bexp),
   (*TODO: Hoare proof rule for [assert b] *)
 Proof.
   (* TODO *)
-Qed.
+Admitted.
+*)
 
 (* ================================================================= *)
 (* EXERCISE 3.2: State and prove [hoare_assume]                      *)
 (* ================================================================= *)
 
+(**
 Theorem hoare_assume: forall (P:Assertion) (b:bexp),
   (*TODO: Hoare proof rule for [assume b] *)
 Proof.
   (* TODO *)
-Qed.
+Admitted.
+*)
 
 
 (* ================================================================= *)
 (* EXERCISE 3.3: State and prove [hoare_choice]                      *)
 (* ================================================================= *)
 
+(**
 Theorem hoare_choice' : forall P c1 c2 Q,
   (*TODO: Hoare proof rule for [c1 !! c2] *)
 Proof.
   (* TODO *)
-Qed.
-
+Admitted.
+*)
 
 (* ================================================================= *)
 (* EXERCISE 3.4: Use the proof rules defined to prove the following  *)
@@ -380,6 +385,7 @@ Qed.
 (*               words what this example is demonstrating.           *)                                            
 (* ================================================================= *)
 
+(**
 Example assert_assume_example:
   {{ X = 1 }}
   assume (X = 2);
@@ -387,8 +393,8 @@ Example assert_assume_example:
   {{ X = 42 }}.  
 Proof.
   (* TODO *)
-Qed.
-
+Admitted.
+*)
 
 
 
@@ -426,7 +432,38 @@ Inductive cstep : (com * result)  -> (com * result) -> Prop :=
           <{while b do c1 end}> / st 
       --> <{ if b then (c1; while b do c1 end) else skip end }> / st
 
-  (* TODO *)
+(** This rule states that if a boolean expression b evaluates to b' in
+ the current state st, then executing an assert statement (assert b) can
+ transition to an assert statement where the condition is updated to b'. *)
+  | CS_Assert: forall st b b',
+      b / st -->b b' ->
+      <{ assert b }> / RNormal st --> <{ assert b' }> / RNormal st
+(** This rule states that if the condition of an assert statement is true,
+ then the program transitions to skip in the current state st. *)
+  | CS_AssertTrue: forall st,
+      <{ assert true }> / st --> <{ skip }> / st
+(** This rule states that if the condition of an assert statement is false,
+ then the program transitions to a special error state RError. *)
+  | CS_AssertFalse: forall st,
+      <{ assert false }> / st --> <{ skip }> / RError
+(** This rule is similar to the CS_Assert rule but for assume statements
+ (assume b), which are used to provide assumptions to the program. *)
+  | CS_Assume: forall st b b',
+      b / st -->b b' ->
+      <{ assume b }> / RNormal st --> <{ assume b' }> / RNormal st
+(** This rule states that if the condition of an assume statement is true,
+ then the program transitions to skip in the current state st. *)
+  | CS_AssumeTrue: forall st,
+      <{ assume true }> / RNormal st --> <{ skip }> / RNormal st
+(** This rule states that if a choice operator (c1 !! c2) is executed and
+ the result r indicates choosing the second command c2, then the program
+ transitions to executing c2 in the same result r. *)
+  | CS_ChoiceRight: forall c1 c2 r,
+      <{ c1 !! c2 }> / r --> <{ c2 }> / r
+(** This rule is similar to the CS_ChoiceRight rule but for choosing the
+ first command c1 in a choice operator. *)
+  | CS_ChoiceLeft: forall c1 c2 r,
+      <{ c1 !! c2 }> / r --> <{ c1 }> / r
   
 
   where " t '/' st '-->' t' '/' st' " := (cstep (t,st) (t',st')).
@@ -488,8 +525,36 @@ Example prog1_example1:
        prog1 / RNormal (X !-> 1) -->* <{ skip }> / RNormal st'
     /\ st' X = 2.
 Proof.
-  (* TODO *)
+  eexists. split.
+  unfold prog1.
+  (* Sequence and assume (X = 1) *)
+  eapply multi_step; [apply CS_SeqStep; apply CS_Assume; apply BS_Eq1; apply AS_Id|].
+  (* Applying BS_Eq to assume (X = 1) *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_Assume; apply BS_Eq|].
+  (* Simplifying assume true to skip *)  
+  simpl; eapply multi_step; [apply CS_SeqStep; apply CS_AssumeTrue|].
+  (* Completing the sequence with skip *)  
+  eapply multi_step; [apply CS_SeqFinish|].
+  (* Choosing the left side of the nondeterministic choice *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_ChoiceLeft|].
+  (* Sequence and (X := X + 1) *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_AssStep; apply AS_Plus1; apply AS_Id|].
+  (* Applying AS_Plus to (X := X + 1) *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_AssStep; apply AS_Plus|].
+  (* Simplifying (X := X + 1) *)  
+  simpl; eapply multi_step; [apply CS_SeqStep; apply CS_Asgn|].
+  (* Completing the sequence with skip *)  
+  eapply multi_step; [apply CS_SeqFinish|].
+  (* assert (X = 2) *)
+  eapply multi_step; [apply CS_Assert; apply BS_Eq1; apply AS_Id|].
+  (* Applying BS_Eq to assert (X = 2) *)
+  eapply multi_step; [apply CS_Assert; apply BS_Eq|].
+  (* Simplifying assert true to skip *)
+  simpl; eapply multi_step; [apply CS_AssertTrue|].
+  apply multi_refl.
+  reflexivity.
 Qed.
+
 
 
 (* ################################################################# *)
@@ -500,7 +565,17 @@ Lemma one_step_aeval_a: forall st a a',
   a / st -->a a' ->
   aeval st a = aeval st a'.
 Proof.
-  (* TODO (Hint: you can prove this by induction on a) *)
+  induction a; intros; auto.
+  (* ANum *)
+  - inversion H.
+  (* AS_Id *)
+  - inversion H. reflexivity.
+  (* APlus *)
+  - inversion H; simpl; auto.
+  (* AMinus *)
+  - inversion H; simpl; auto.
+  (* AMult *)
+  - inversion H; simpl; auto.
 Qed.
 
 
@@ -610,9 +685,12 @@ Inductive dcom : Type :=
   (* ->> {{ P }} d *)
 | DCPost (d : dcom) (Q : Assertion)
   (* d ->> {{ Q }} *)
-| DCAssert (* TODO *) 
-| DCAssume (* TODO *)
-| DCNonDetChoice (* TODO *)
+| DCAssert (P : Assertion) (Q : Assertion)
+  (* assert {{ P }} {{ Q }} *)
+| DCAssume (P : Assertion) (Q : Assertion)
+  (* assume {{ P }} {{ Q }} *)
+| DCNonDetChoice (d1 d2 : dcom) (Q : Assertion)
+  (* d1 !! d2 {{ Q }} *)
 
 (** To provide the initial precondition that goes at the very top of a
     decorated program, we introduce a new type [decorated]: *)
@@ -653,9 +731,18 @@ Notation " d ; d' "
 Notation "{{ P }} d"
       := (Decorated P d)
       (in custom com at level 91, P constr) : dcom_scope.
-
-
-(* TODO: notation for the three new constructs *)
+(* New notations *)
+Notation "'assert' {{ P }} {{ Q }}"
+      := (DCAssert P Q)
+           (in custom com at level 0, P constr, Q constr) : dcom_scope.
+Notation "'assume' {{ P }} {{ Q }}"
+      := (DCAssume P Q)
+           (in custom com at level 0, P constr, Q constr) : dcom_scope.
+Notation "d1 '!!' d2 {{ Q }}"
+      := (DCNonDetChoice d1 d2 Q)
+           (in custom com at level 89, right associativity,
+            d1 custom com at level 99, d2 custom com at level 99,
+            Q constr) : dcom_scope.
 
 Local Open Scope dcom_scope.
 
@@ -693,6 +780,9 @@ Fixpoint extract (d : dcom) : com :=
   | DCPre _ d          => extract d
   | DCPost d _         => extract d
   (* TODO *)
+  | DCAssert _ _       => CSkip
+  | DCAssume _ _       => CSkip
+  | DCNonDetChoice d1 d2 _ => CChoice (extract d1) (extract d2)
   end.
 
 Definition extract_dec (dec : decorated) : com :=
@@ -726,6 +816,9 @@ Fixpoint post (d : dcom) : Assertion :=
   | DCPre _ d               => post d
   | DCPost _ Q              => Q
   (* TODO *)
+  | DCAssert _ Q            => Q
+  | DCAssume _ _            => True
+  | DCNonDetChoice _ _ Q    => Q
   end.
 
 Definition post_dec (dec : decorated) : Assertion :=
@@ -893,7 +986,12 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
   | DCPost d Q =>
       verification_conditions P d
       /\ (post d ->> Q)
-  (* TODO *)
+  | DCAssert P Q =>
+      (P ->> Q)
+  | DCAssume P Q =>
+      (P ->> Q)
+  | DCNonDetChoice d1 d2 Q =>
+      (P ->> Q) /\ verification_conditions Q d1 /\ verification_conditions Q d2
   end.
 
 (** The key theorem states that [verification_conditions] does its job
