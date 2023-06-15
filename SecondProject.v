@@ -163,7 +163,21 @@ Inductive ceval : com -> state -> result -> Prop :=
       beval st b = true ->
       st =[ c ]=> RError ->
       st =[ while b do c end ]=> RError
-  (* TODO *)
+  | E_AssertTrue : forall st b,
+      beval st b = true ->
+      st =[ assert b ]=> RNormal st
+  | E_AssertFalse : forall st b,
+      beval st b = false ->
+      st =[ assert b ]=> RError
+  | E_Assume : forall st b, 
+      beval st b = true ->
+      st =[ assume b ]=> RNormal st
+  | E_ChoiceA : forall st st' c1 c2,
+      st =[ c1 ]=> st' ->
+      st =[ c1 !! c2 ]=> st'
+  | E_ChoiceB : forall st st' c1 c2,
+      st =[ c2 ]=> st' ->
+      st =[ c1 !! c2]=> st'
 
 where "st '=[' c ']=>' r" := (ceval c st r).
 
@@ -199,14 +213,21 @@ Theorem assume_false: forall P Q b,
        (forall st, beval st b = false) ->
        ({{P}} assume b {{Q}}).
 Proof.
-  (* TODO *)
+  intros. unfold hoare_triple. eexists. apply conj.
+    - inversion H0. reflexivity.
+    - specialize (H st). inversion H0. rewrite H3 in H; discriminate.
 Qed.
 
 Theorem assert_implies_assume : forall P b Q,
      ({{P}} assert b {{Q}})
   -> ({{P}} assume b {{Q}}).
 Proof.
-  (* TODO *)
+  intros. unfold hoare_triple. eexists. split.
+    - inversion H0; try reflexivity.
+    - inversion H0. unfold hoare_triple in H. specialize (H st r). 
+      destruct H5; destruct H; try assumption.
+      + apply E_AssertTrue. assumption.
+      + inversion H; rewrite H5 in H0. inversion H0; apply H6. 
 Qed.
 
 
@@ -347,9 +368,15 @@ Qed.
 (* ================================================================= *)
 
 Theorem hoare_assert: forall P (b: bexp),
-  (*TODO: Hoare proof rule for [assert b] *)
+  (* Hoare proof rule for [assert b] *)
+    {{ P /\ b}} assert b {{ P }}.
 Proof.
-  (* TODO *)
+  unfold hoare_triple. intros. inversion H.
+    + subst. exists st. split; try reflexivity.
+      - apply H0.
+    + subst. exists st. split; try reflexivity.
+      - inversion H0. inversion H2. rewrite H3 in H2. discriminate.
+      - apply H0.
 Qed.
 
 (* ================================================================= *)
@@ -357,9 +384,11 @@ Qed.
 (* ================================================================= *)
 
 Theorem hoare_assume: forall (P:Assertion) (b:bexp),
-  (*TODO: Hoare proof rule for [assume b] *)
+  (* Hoare proof rule for [assume b] *)
+    {{ b -> P }} assume b {{ P }}.
 Proof.
-  (* TODO *)
+  unfold hoare_triple. intros. eexists. split. inversion H; try reflexivity.
+    - apply H0. inversion H. assumption.
 Qed.
 
 
@@ -367,10 +396,21 @@ Qed.
 (* EXERCISE 3.3: State and prove [hoare_choice]                      *)
 (* ================================================================= *)
 
-Theorem hoare_choice' : forall P c1 c2 Q,
-  (*TODO: Hoare proof rule for [c1 !! c2] *)
+Theorem hoare_choice' : forall P1 P2 c1 c2 Q1 Q2,
+  (* Hoare proof rule for [c1 !! c2] *)
+    {{ P1 }} c1 {{ Q1 }} ->
+    {{ P2 }} c2 {{ Q2 }} ->
+    {{ P1 /\ P2}} c1 !! c2 {{ Q1 \/ Q2 }}.
 Proof.
-  (* TODO *)
+  intros P1 c1 Q1 P2 c2 Q2 IH1 IH2. 
+  unfold hoare_triple in *.
+  intros st r H HO. inversion H; subst.
+    - apply (IH1 st) in H4.
+      + destruct H4. inversion H0. inversion H1. exists x. split; try reflexivity. auto.
+      + apply HO.
+    - apply (IH2 st) in H4.
+      + destruct H4. inversion H0. inversion H1. exists x. split; try reflexivity. auto.
+      + apply HO.
 Qed.
 
 
@@ -386,7 +426,12 @@ Example assert_assume_example:
   X := X + 1
   {{ X = 42 }}.  
 Proof.
-  (* TODO *)
+  eapply hoare_seq.
+    - apply hoare_asgn.
+    - eapply hoare_consequence_pre.
+      + apply hoare_assume.
+      + unfold "->>". intros. simpl. simpl in H. simpl in H0. inversion H.
+        rewrite H2. rewrite H2 in H0. discriminate.
 Qed.
 
 
@@ -425,9 +470,38 @@ Inductive cstep : (com * result)  -> (com * result) -> Prop :=
   | CS_While : forall st b c1,
           <{while b do c1 end}> / st 
       --> <{ if b then (c1; while b do c1 end) else skip end }> / st
-
-  (* TODO *)
-  
+  (** This rule states that if a boolean expression b evaluates to b' in
+ the current state st, then executing an assert statement (assert b) can
+ transition to an assert statement where the condition is updated to b'. *)
+  | CS_Assert: forall st b b',
+      b / st -->b b' ->
+      <{ assert b }> / RNormal st --> <{ assert b' }> / RNormal st
+(** This rule states that if the condition of an assert statement is true,
+ then the program transitions to skip in the current state st. *)
+  | CS_AssertTrue: forall st,
+      <{ assert true }> / st --> <{ skip }> / st
+(** This rule states that if the condition of an assert statement is false,
+ then the program transitions to a special error state RError. *)
+  | CS_AssertFalse: forall st,
+      <{ assert false }> / st --> <{ skip }> / RError
+(** This rule is similar to the CS_Assert rule but for assume statements
+ (assume b), which are used to provide assumptions to the program. *)
+  | CS_Assume: forall st b b',
+      b / st -->b b' ->
+      <{ assume b }> / RNormal st --> <{ assume b' }> / RNormal st
+(** This rule states that if the condition of an assume statement is true,
+ then the program transitions to skip in the current state st. *)
+  | CS_AssumeTrue: forall st,
+      <{ assume true }> / RNormal st --> <{ skip }> / RNormal st
+(** This rule states that if a choice operator (c1 !! c2) is executed and
+ the result r indicates choosing the second command c2, then the program
+ transitions to executing c2 in the same result r. *)
+  | CS_ChoiceRight: forall c1 c2 r,
+      <{ c1 !! c2 }> / r --> <{ c2 }> / r
+(** This rule is similar to the CS_ChoiceRight rule but for choosing the
+ first command c1 in a choice operator. *)
+  | CS_ChoiceLeft: forall c1 c2 r,
+      <{ c1 !! c2 }> / r --> <{ c1 }> / r
 
   where " t '/' st '-->' t' '/' st' " := (cstep (t,st) (t',st')).
 
@@ -488,7 +562,34 @@ Example prog1_example1:
        prog1 / RNormal (X !-> 1) -->* <{ skip }> / RNormal st'
     /\ st' X = 2.
 Proof.
-  (* TODO *)
+  eexists. split.
+  unfold prog1.
+  (* Sequence and assume (X = 1) *)
+  eapply multi_step; [apply CS_SeqStep; apply CS_Assume; apply BS_Eq1; apply AS_Id|].
+  (* Applying BS_Eq to assume (X = 1) *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_Assume; apply BS_Eq|].
+  (* Simplifying assume true to skip *)  
+  simpl; eapply multi_step; [apply CS_SeqStep; apply CS_AssumeTrue|].
+  (* Completing the sequence with skip *)  
+  eapply multi_step; [apply CS_SeqFinish|].
+  (* Choosing the left side of the nondeterministic choice *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_ChoiceLeft|].
+  (* Sequence and (X := X + 1) *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_AssStep; apply AS_Plus1; apply AS_Id|].
+  (* Applying AS_Plus to (X := X + 1) *)  
+  eapply multi_step; [apply CS_SeqStep; apply CS_AssStep; apply AS_Plus|].
+  (* Simplifying (X := X + 1) *)  
+  simpl; eapply multi_step; [apply CS_SeqStep; apply CS_Asgn|].
+  (* Completing the sequence with skip *)  
+  eapply multi_step; [apply CS_SeqFinish|].
+  (* assert (X = 2) *)
+  eapply multi_step; [apply CS_Assert; apply BS_Eq1; apply AS_Id|].
+  (* Applying BS_Eq to assert (X = 2) *)
+  eapply multi_step; [apply CS_Assert; apply BS_Eq|].
+  (* Simplifying assert true to skip *)
+  simpl; eapply multi_step; [apply CS_AssertTrue|].
+  apply multi_refl.
+  reflexivity.
 Qed.
 
 
@@ -500,7 +601,17 @@ Lemma one_step_aeval_a: forall st a a',
   a / st -->a a' ->
   aeval st a = aeval st a'.
 Proof.
-  (* TODO (Hint: you can prove this by induction on a) *)
+  induction a; intros; auto.
+  (* ANum *)
+  - inversion H.
+  (* AS_Id *)
+  - inversion H. reflexivity.
+  (* APlus *)
+  - inversion H; simpl; auto.
+  (* AMinus *)
+  - inversion H; simpl; auto.
+  (* AMult *)
+  - inversion H; simpl; auto.
 Qed.
 
 
@@ -610,9 +721,12 @@ Inductive dcom : Type :=
   (* ->> {{ P }} d *)
 | DCPost (d : dcom) (Q : Assertion)
   (* d ->> {{ Q }} *)
-| DCAssert (* TODO *) 
-| DCAssume (* TODO *)
-| DCNonDetChoice (* TODO *)
+| DCAssert (P : Assertion) (b : bexp)
+  (* assert {{ P }} {{ b }} *)
+| DCAssume (P : Assertion) (b : bexp)
+  (* assume {{ P }} {{ b }} *)
+| DCNonDetChoice (d1 d2 : dcom) (Q : Assertion).
+  (* d1 !! d2 {{ Q }} *)
 
 (** To provide the initial precondition that goes at the very top of a
     decorated program, we introduce a new type [decorated]: *)
@@ -653,9 +767,17 @@ Notation " d ; d' "
 Notation "{{ P }} d"
       := (Decorated P d)
       (in custom com at level 91, P constr) : dcom_scope.
-
-
-(* TODO: notation for the three new constructs *)
+(* New notations *)
+Notation "'assert' {{ P }} {{ b }}"
+      := (DCAssert P b)
+           (in custom com at level 0, P constr, b custom com at level 99) : dcom_scope.
+Notation "'assume' {{ P }} {{ b }}"
+      := (DCAssume P b)
+           (in custom com at level 0, P constr, b custom com at level 99) : dcom_scope.
+Notation "d1 '!!' d2 '{{' Q '}}'"
+      := (DCNonDetChoice d1 d2 Q)
+           (in custom com at level 92, right associativity,
+            Q constr at level 93) : dcom_scope.
 
 Local Open Scope dcom_scope.
 
@@ -693,6 +815,9 @@ Fixpoint extract (d : dcom) : com :=
   | DCPre _ d          => extract d
   | DCPost d _         => extract d
   (* TODO *)
+  | DCAssert _ b       => CAssert b
+  | DCAssume _ b       => CAssume b
+  | DCNonDetChoice d1 d2 _ => CNonDetChoice (extract d1) (extract d2)
   end.
 
 Definition extract_dec (dec : decorated) : com :=
@@ -726,6 +851,9 @@ Fixpoint post (d : dcom) : Assertion :=
   | DCPre _ d               => post d
   | DCPost _ Q              => Q
   (* TODO *)
+  | DCAssert _ Q            => Q
+  | DCAssume _ _            => True
+  | DCNonDetChoice _ _ Q    => Q
   end.
 
 Definition post_dec (dec : decorated) : Assertion :=
@@ -894,6 +1022,13 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
       verification_conditions P d
       /\ (post d ->> Q)
   (* TODO *)
+  | DCAssert P Q =>
+      (P ->> Q)
+  | DCAssume P' Q =>
+      (P ->> P')
+      /\ (P' ->> Q)
+  | DCNonDetChoice d1 d2 Q =>
+      (P ->> Q) /\ (verification_conditions Q d1 \/ verification_conditions Q d2)
   end.
 
 (** The key theorem states that [verification_conditions] does its job
@@ -941,7 +1076,15 @@ Proof.
     destruct H as [Hd HQ].
     eapply hoare_consequence_post; eauto.
   (* TODO *)
-Qed.
+  - (* Assert *)
+    eapply hoare_consequence_pre.
+    + apply hoare_assert.
+    + 
+  - (* Assume *)
+    admit.
+  - (* Choice *)
+    admit.
+Admitted.
 
 
 (** Now that all the pieces are in place, we can define what it means
@@ -1146,23 +1289,24 @@ Proof. verify. Qed.
 (* TODO: fill in the assertions *)
 Definition sqrt_dec (m:nat) : decorated :=
   <{
-    {{ FILL_IN_HERE }} ->>
-    {{ FILL_IN_HERE }}
+    {{ X = m }} ->>
+    {{ X = m /\ 0*0 <= m }}
       Z := 0
-                    {{ FILL_IN_HERE }};
+                    {{ X = m /\ Z*Z <= m }};
       while ((Z+1)*(Z+1) <= X) do
-                    {{ FILL_IN_HERE  }} ->>
-                    {{ FILL_IN_HERE }}
+                    {{ (X = m /\ Z*Z<=m)
+                   /\ (Z + 1)*(Z + 1) <= X }} ->>
+                    {{ X = m /\ (Z+1)*(Z+1)<=m }}
         Z := Z + 1
-                    {{ FILL_IN_HERE }}
+                    {{ X = m /\ Z*Z<=m}}
       end
-    {{ FILL_IN_HERE }} ->>
-    {{ FILL_IN_HERE }}
+    {{ (X = m /\ Z*Z<=m) /\ ~((Z + 1)*(Z + 1) <= X) }} ->>
+    {{ Z*Z<=m /\ m<(Z+1)*(Z+1) }}
   }>.
 
 Theorem sqrt_correct : forall m,
   outer_triple_valid (sqrt_dec m).
-Proof. (* TODO *) Admitted.
+Proof. intro m. verify. Qed.
 
 
 
