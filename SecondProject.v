@@ -721,10 +721,10 @@ Inductive dcom : Type :=
   (* ->> {{ P }} d *)
 | DCPost (d : dcom) (Q : Assertion)
   (* d ->> {{ Q }} *)
-| DCAssert (P : Assertion) (b : bexp)
-  (* assert {{ P }} {{ b }} *)
-| DCAssume (P : Assertion) (b : bexp)
-  (* assume {{ P }} {{ b }} *)
+| DCAssert (b : bexp) (Q : Assertion)
+  (* assert {{ b }} {{ Q }} *)
+| DCAssume (b : bexp) (Q : Assertion)
+  (* assume {{ b }} {{ Q }} *)
 | DCNonDetChoice (d1 d2 : dcom) (Q : Assertion).
   (* d1 !! d2 {{ Q }} *)
 
@@ -768,10 +768,10 @@ Notation "{{ P }} d"
       := (Decorated P d)
       (in custom com at level 91, P constr) : dcom_scope.
 (* New notations *)
-Notation "'assert' {{ P }} {{ b }}"
+Notation "'assert' {{ b }} {{ P }}"
       := (DCAssert P b)
            (in custom com at level 0, P constr, b custom com at level 99) : dcom_scope.
-Notation "'assume' {{ P }} {{ b }}"
+Notation "'assume' {{ b }} {{ P }}"
       := (DCAssume P b)
            (in custom com at level 0, P constr, b custom com at level 99) : dcom_scope.
 Notation "d1 '!!' d2 '{{' Q '}}'"
@@ -815,8 +815,8 @@ Fixpoint extract (d : dcom) : com :=
   | DCPre _ d          => extract d
   | DCPost d _         => extract d
   (* TODO *)
-  | DCAssert _ b       => CAssert b
-  | DCAssume _ b       => CAssume b
+  | DCAssert a _       => CAssert a
+  | DCAssume a _       => CAssume a
   | DCNonDetChoice d1 d2 _ => CNonDetChoice (extract d1) (extract d2)
   end.
 
@@ -1022,13 +1022,12 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
       verification_conditions P d
       /\ (post d ->> Q)
   (* TODO *)
-  | DCAssert P Q =>
+  | DCAssert a Q =>
       (P ->> Q)
-  | DCAssume P' Q =>
-      (P ->> P')
-      /\ (P' ->> Q)
+  | DCAssume a Q =>
+      (P ->> True)
   | DCNonDetChoice d1 d2 Q =>
-      (P ->> Q) /\ (verification_conditions Q d1 \/ verification_conditions Q d2)
+      verification_conditions Q d1 \/ verification_conditions Q d2
   end.
 
 (** The key theorem states that [verification_conditions] does its job
@@ -1079,11 +1078,13 @@ Proof.
   - (* Assert *)
     eapply hoare_consequence_pre.
     + apply hoare_assert.
-    + 
+    + admit.
   - (* Assume *)
-    admit.
+    eapply hoare_consequence_pre.
+    + apply hoare_assume.
+    + eauto.
   - (* Choice *)
-    admit.
+    + admit.
 Admitted.
 
 

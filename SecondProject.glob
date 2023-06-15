@@ -1,4 +1,4 @@
-DIGEST 3c1982281cf4f0228ae048e2019e7e92
+DIGEST 44b3a07d9ad0ebc56658ba36bd7cc21d
 FSecondProject.SecondProject
 R1493:1496 SecondProject.Maps <> <> lib
 R1523:1536 Coq.Arith.PeanoNat <> <> lib
@@ -72,13 +72,18 @@ constr 5687:5695 SecondProject E_IfFalse
 constr 5819:5830 SecondProject E_WhileFalse
 constr 5925:5941 SecondProject E_WhileTrueNormal
 constr 6106:6121 SecondProject E_WhileTrueError
+constr 6239:6250 SecondProject E_AssertTrue
+constr 6334:6346 SecondProject E_AssertFalse
+constr 6427:6434 SecondProject E_Assume
+constr 6519:6527 SecondProject E_ChoiceA
+constr 6611:6619 SecondProject E_ChoiceB
 R5104:5107 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R5101:5103 SecondProject.SecondProject SecondProject com ind
 R5113:5116 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R5108:5112 SecondProject.Imp <> state def
 R5123:5126 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R5117:5122 SecondProject.SecondProject SecondProject result ind
-R6279:6283 SecondProject.SecondProject <> ceval:19 ind
+R6729:6733 SecondProject.SecondProject <> ceval:19 ind
 binder 5191:5192 <> st:20
 R5203:5206 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
 R5211:5215 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
@@ -285,57 +290,1458 @@ R6213:6213 SecondProject.SecondProject <> b:52 var
 R6218:6218 SecondProject.SecondProject <> c:53 var
 R6201:6202 SecondProject.SecondProject <> st:51 var
 R6228:6233 SecondProject.SecondProject SecondProject RError constr
-R6279:6283 SecondProject.SecondProject SecondProject ceval ind
-not 6255:6255 SecondProject :::x_'=['_x_']=>'_x
-def 6531:6542 SecondProject hoare_triple
-R6560:6568 SecondProject.Hoare <> Assertion def
-binder 6556:6556 <> P:54
-R6576:6578 SecondProject.SecondProject SecondProject com ind
-binder 6572:6572 <> c:55
-R6586:6594 SecondProject.Hoare <> Assertion def
-binder 6582:6582 <> Q:56
-binder 6616:6617 <> st:57
-binder 6619:6619 <> r:58
-R6640:6644 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6629:6632 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
-R6634:6638 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
-R6633:6633 SecondProject.SecondProject <> c:55 var
-R6627:6628 SecondProject.SecondProject <> st:57 var
-R6639:6639 SecondProject.SecondProject <> r:58 var
-R6649:6659 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6696:6696 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6645:6645 SecondProject.SecondProject <> P:54 var
-R6647:6648 SecondProject.SecondProject <> st:57 var
-R6660:6666 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
-R6670:6671 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
-binder 6667:6669 <> st':59
-R6687:6690 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
-R6673:6675 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R6672:6672 SecondProject.SecondProject <> r:58 var
-R6676:6682 SecondProject.SecondProject SecondProject RNormal constr
-R6684:6686 SecondProject.SecondProject <> st':59 var
-R6691:6691 SecondProject.SecondProject <> Q:56 var
-R6693:6695 SecondProject.SecondProject <> st':59 var
-R6738:6749 SecondProject.SecondProject SecondProject hoare_triple def
-not 6710:6710 SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}'
-prf 7560:7571 SecondProject assume_false
-binder 7581:7581 <> P:60
-binder 7583:7583 <> Q:61
-binder 7585:7585 <> b:62
-R7595:7595 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R7625:7637 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R7658:7658 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-binder 7603:7604 <> st:63
-R7617:7619 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R7607:7611 SecondProject.Imp <> beval def
-R7613:7614 SecondProject.SecondProject <> st:63 var
-R7616:7616 SecondProject.SecondProject <> b:62 var
-R7620:7624 SecondProject.Imp <> :::'false' not
-R7638:7639 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
-R7641:7643 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
-R7652:7654 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
-R7656:7657 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
-R7640:7640 SecondProject.SecondProject <> P:60 var
-R7644:7650 SecondProject.SecondProject SecondProject :com::'assume'_x not
-R7651:7651 SecondProject.SecondProject <> b:62 var
-R7655:7655 SecondProject.SecondProject <> Q:61 var
+binder 6261:6262 <> st:54
+binder 6264:6264 <> b:55
+R6290:6299 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6283:6285 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6273:6277 SecondProject.Imp <> beval def
+R6279:6280 SecondProject.SecondProject <> st:54 var
+R6282:6282 SecondProject.SecondProject <> b:55 var
+R6286:6289 SecondProject.Imp <> :::'true' not
+R6302:6305 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6314:6318 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6306:6312 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R6313:6313 SecondProject.SecondProject <> b:55 var
+R6300:6301 SecondProject.SecondProject <> st:54 var
+R6319:6325 SecondProject.SecondProject SecondProject RNormal constr
+R6327:6328 SecondProject.SecondProject <> st:54 var
+binder 6357:6358 <> st:56
+binder 6360:6360 <> b:57
+R6387:6396 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6379:6381 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6369:6373 SecondProject.Imp <> beval def
+R6375:6376 SecondProject.SecondProject <> st:56 var
+R6378:6378 SecondProject.SecondProject <> b:57 var
+R6382:6386 SecondProject.Imp <> :::'false' not
+R6399:6402 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6411:6415 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6403:6409 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R6410:6410 SecondProject.SecondProject <> b:57 var
+R6397:6398 SecondProject.SecondProject <> st:56 var
+R6416:6421 SecondProject.SecondProject SecondProject RError constr
+binder 6445:6446 <> st:58
+binder 6448:6448 <> b:59
+R6475:6484 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6468:6470 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6458:6462 SecondProject.Imp <> beval def
+R6464:6465 SecondProject.SecondProject <> st:58 var
+R6467:6467 SecondProject.SecondProject <> b:59 var
+R6471:6474 SecondProject.Imp <> :::'true' not
+R6487:6490 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6499:6503 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6491:6497 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R6498:6498 SecondProject.SecondProject <> b:59 var
+R6485:6486 SecondProject.SecondProject <> st:58 var
+R6504:6510 SecondProject.SecondProject SecondProject RNormal constr
+R6512:6513 SecondProject.SecondProject <> st:58 var
+binder 6538:6539 <> st:60
+binder 6541:6543 <> st':61
+binder 6545:6546 <> c1:62
+binder 6548:6549 <> c2:63
+R6574:6583 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6560:6563 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6566:6570 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6564:6565 SecondProject.SecondProject <> c1:62 var
+R6558:6559 SecondProject.SecondProject <> st:60 var
+R6571:6573 SecondProject.SecondProject <> st':61 var
+R6586:6589 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6598:6602 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6592:6595 SecondProject.SecondProject SecondProject :com:com_scope:x_'!!'_x not
+R6590:6591 SecondProject.SecondProject <> c1:62 var
+R6596:6597 SecondProject.SecondProject <> c2:63 var
+R6584:6585 SecondProject.SecondProject <> st:60 var
+R6603:6605 SecondProject.SecondProject <> st':61 var
+binder 6630:6631 <> st:64
+binder 6633:6635 <> st':65
+binder 6637:6638 <> c1:66
+binder 6640:6641 <> c2:67
+R6666:6675 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6652:6655 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6658:6662 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6656:6657 SecondProject.SecondProject <> c2:67 var
+R6650:6651 SecondProject.SecondProject <> st:64 var
+R6663:6665 SecondProject.SecondProject <> st':65 var
+R6678:6681 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6690:6693 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R6684:6687 SecondProject.SecondProject SecondProject :com:com_scope:x_'!!'_x not
+R6682:6683 SecondProject.SecondProject <> c1:66 var
+R6688:6689 SecondProject.SecondProject <> c2:67 var
+R6676:6677 SecondProject.SecondProject <> st:64 var
+R6694:6696 SecondProject.SecondProject <> st':65 var
+R6729:6733 SecondProject.SecondProject SecondProject ceval ind
+not 6705:6705 SecondProject :::x_'=['_x_']=>'_x
+def 6981:6992 SecondProject hoare_triple
+R7010:7018 SecondProject.Hoare <> Assertion def
+binder 7006:7006 <> P:68
+R7026:7028 SecondProject.SecondProject SecondProject com ind
+binder 7022:7022 <> c:69
+R7036:7044 SecondProject.Hoare <> Assertion def
+binder 7032:7032 <> Q:70
+binder 7066:7067 <> st:71
+binder 7069:7069 <> r:72
+R7090:7094 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7079:7082 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R7084:7088 SecondProject.SecondProject SecondProject :::x_'=['_x_']=>'_x not
+R7083:7083 SecondProject.SecondProject <> c:69 var
+R7077:7078 SecondProject.SecondProject <> st:71 var
+R7089:7089 SecondProject.SecondProject <> r:72 var
+R7099:7109 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7146:7146 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7095:7095 SecondProject.SecondProject <> P:68 var
+R7097:7098 SecondProject.SecondProject <> st:71 var
+R7110:7116 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R7120:7121 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 7117:7119 <> st':73
+R7137:7140 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R7123:7125 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7122:7122 SecondProject.SecondProject <> r:72 var
+R7126:7132 SecondProject.SecondProject SecondProject RNormal constr
+R7134:7136 SecondProject.SecondProject <> st':73 var
+R7141:7141 SecondProject.SecondProject <> Q:70 var
+R7143:7145 SecondProject.SecondProject <> st':73 var
+R7188:7199 SecondProject.SecondProject SecondProject hoare_triple def
+not 7160:7160 SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}'
+prf 8010:8021 SecondProject assume_false
+binder 8031:8031 <> P:74
+binder 8033:8033 <> Q:75
+binder 8035:8035 <> b:76
+R8045:8045 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8075:8087 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8108:8108 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 8053:8054 <> st:77
+R8067:8069 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8057:8061 SecondProject.Imp <> beval def
+R8063:8064 SecondProject.SecondProject <> st:77 var
+R8066:8066 SecondProject.SecondProject <> b:76 var
+R8070:8074 SecondProject.Imp <> :::'false' not
+R8088:8089 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8091:8093 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8102:8104 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8106:8107 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8090:8090 SecondProject.SecondProject <> P:74 var
+R8094:8100 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R8101:8101 SecondProject.SecondProject <> b:76 var
+R8105:8105 SecondProject.SecondProject <> Q:75 var
+R8135:8146 SecondProject.SecondProject SecondProject hoare_triple def
+R8164:8167 Coq.Init.Logic <> conj constr
+R8164:8167 Coq.Init.Logic <> conj constr
+prf 8287:8307 SecondProject assert_implies_assume
+binder 8318:8318 <> P:78
+binder 8320:8320 <> b:79
+binder 8322:8322 <> Q:80
+R8330:8330 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8351:8358 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8379:8379 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8331:8332 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8334:8336 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8345:8347 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8349:8350 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8333:8333 SecondProject.SecondProject <> P:78 var
+R8337:8343 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R8344:8344 SecondProject.SecondProject <> b:79 var
+R8348:8348 SecondProject.SecondProject <> Q:80 var
+R8359:8360 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8362:8364 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8373:8375 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8377:8378 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R8361:8361 SecondProject.SecondProject <> P:78 var
+R8365:8371 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R8372:8372 SecondProject.SecondProject <> b:79 var
+R8376:8376 SecondProject.SecondProject <> Q:80 var
+R8406:8417 SecondProject.SecondProject SecondProject hoare_triple def
+R8500:8511 SecondProject.SecondProject SecondProject hoare_triple def
+R8602:8613 SecondProject.SecondProject SecondProject E_AssertTrue constr
+R8602:8613 SecondProject.SecondProject SecondProject E_AssertTrue constr
+prf 9098:9107 SecondProject hoare_asgn
+binder 9118:9118 <> Q:81
+binder 9120:9120 <> X:82
+binder 9122:9122 <> a:83
+R9127:9128 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9140:9142 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9149:9151 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9153:9154 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9130:9131 SecondProject.Hoare <> ::hoare_spec_scope:x_'['_x_'|->'_x_']' not
+R9133:9137 SecondProject.Hoare <> ::hoare_spec_scope:x_'['_x_'|->'_x_']' not
+R9139:9139 SecondProject.Hoare <> ::hoare_spec_scope:x_'['_x_'|->'_x_']' not
+R9132:9132 SecondProject.SecondProject <> X:82 var
+R9138:9138 SecondProject.SecondProject <> a:83 var
+R9129:9129 SecondProject.SecondProject <> Q:81 var
+R9144:9147 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R9143:9143 SecondProject.SecondProject <> X:82 var
+R9148:9148 SecondProject.SecondProject <> a:83 var
+R9152:9152 SecondProject.SecondProject <> Q:81 var
+R9173:9184 SecondProject.SecondProject SecondProject hoare_triple def
+prf 9300:9320 SecondProject hoare_consequence_pre
+R9341:9349 SecondProject.Hoare <> Assertion def
+binder 9332:9332 <> P:84
+binder 9334:9335 <> P':85
+binder 9337:9337 <> Q:86
+binder 9352:9352 <> c:87
+R9371:9376 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9357:9358 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9361:9363 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9365:9367 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9369:9370 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9359:9360 SecondProject.SecondProject <> P':85 var
+R9364:9364 SecondProject.SecondProject <> c:87 var
+R9368:9368 SecondProject.SecondProject <> Q:86 var
+R9385:9390 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9378:9382 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R9377:9377 SecondProject.SecondProject <> P:84 var
+R9383:9384 SecondProject.SecondProject <> P':85 var
+R9391:9392 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9394:9396 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9398:9400 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9402:9403 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9393:9393 SecondProject.SecondProject <> P:84 var
+R9397:9397 SecondProject.SecondProject <> c:87 var
+R9401:9401 SecondProject.SecondProject <> Q:86 var
+R9422:9433 SecondProject.SecondProject SecondProject hoare_triple def
+R9436:9440 SecondProject.Hoare <> assert_implies def
+prf 9620:9641 SecondProject hoare_consequence_post
+R9662:9670 SecondProject.Hoare <> Assertion def
+binder 9653:9653 <> P:88
+binder 9655:9655 <> Q:89
+binder 9657:9658 <> Q':90
+binder 9673:9673 <> c:91
+R9692:9697 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9678:9679 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9681:9683 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9685:9687 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9690:9691 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9680:9680 SecondProject.SecondProject <> P:88 var
+R9684:9684 SecondProject.SecondProject <> c:91 var
+R9688:9689 SecondProject.SecondProject <> Q':90 var
+R9706:9711 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9700:9704 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R9698:9699 SecondProject.SecondProject <> Q':90 var
+R9705:9705 SecondProject.SecondProject <> Q:89 var
+R9712:9713 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9715:9717 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9719:9721 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9723:9724 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R9714:9714 SecondProject.SecondProject <> P:88 var
+R9718:9718 SecondProject.SecondProject <> c:91 var
+R9722:9722 SecondProject.SecondProject <> Q:89 var
+R9795:9806 SecondProject.SecondProject SecondProject hoare_triple def
+R9829:9835 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9839:9840 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 9836:9838 <> st':92
+R9856:9859 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R9842:9844 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9845:9851 SecondProject.SecondProject SecondProject RNormal constr
+R9853:9855 SecondProject.SecondProject <> st':92 var
+R9863:9865 SecondProject.SecondProject <> st':92 var
+R9829:9835 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9839:9840 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 9836:9838 <> st':93
+R9856:9859 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R9842:9844 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9845:9851 SecondProject.SecondProject SecondProject RNormal constr
+R9853:9855 SecondProject.SecondProject <> st':93 var
+R9863:9865 SecondProject.SecondProject <> st':93 var
+prf 10015:10031 SecondProject hoare_consequence
+R10055:10063 SecondProject.Hoare <> Assertion def
+binder 10043:10043 <> P:94
+binder 10045:10046 <> P':95
+binder 10048:10048 <> Q:96
+binder 10050:10051 <> Q':97
+binder 10066:10066 <> c:98
+R10086:10091 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10071:10072 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10075:10077 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10079:10081 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10084:10085 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10073:10074 SecondProject.SecondProject <> P':95 var
+R10078:10078 SecondProject.SecondProject <> c:98 var
+R10082:10083 SecondProject.SecondProject <> Q':97 var
+R10100:10105 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10093:10097 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R10092:10092 SecondProject.SecondProject <> P:94 var
+R10098:10099 SecondProject.SecondProject <> P':95 var
+R10114:10119 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10108:10112 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R10106:10107 SecondProject.SecondProject <> Q':97 var
+R10113:10113 SecondProject.SecondProject <> Q:96 var
+R10120:10121 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10123:10125 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10127:10129 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10131:10132 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10122:10122 SecondProject.SecondProject <> P:94 var
+R10126:10126 SecondProject.SecondProject <> c:98 var
+R10130:10130 SecondProject.SecondProject <> Q:96 var
+R10191:10211 SecondProject.SecondProject SecondProject hoare_consequence_pre thm
+R10191:10211 SecondProject.SecondProject SecondProject hoare_consequence_pre thm
+R10240:10261 SecondProject.SecondProject SecondProject hoare_consequence_post thm
+R10240:10261 SecondProject.SecondProject SecondProject hoare_consequence_post thm
+prf 10346:10354 SecondProject hoare_seq
+binder 10365:10365 <> P:99
+binder 10367:10367 <> Q:100
+binder 10369:10369 <> R:101
+binder 10371:10372 <> c1:102
+binder 10374:10375 <> c2:103
+R10394:10399 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10380:10381 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10383:10385 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10388:10390 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10392:10393 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10382:10382 SecondProject.SecondProject <> Q:100 var
+R10386:10387 SecondProject.SecondProject <> c2:103 var
+R10391:10391 SecondProject.SecondProject <> R:101 var
+R10414:10419 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10400:10401 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10403:10405 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10408:10410 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10412:10413 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10402:10402 SecondProject.SecondProject <> P:99 var
+R10406:10407 SecondProject.SecondProject <> c1:102 var
+R10411:10411 SecondProject.SecondProject <> Q:100 var
+R10420:10421 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10423:10425 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10431:10433 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10435:10436 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10422:10422 SecondProject.SecondProject <> P:99 var
+R10428:10428 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R10426:10427 SecondProject.SecondProject <> c1:102 var
+R10429:10430 SecondProject.SecondProject <> c2:103 var
+R10434:10434 SecondProject.SecondProject <> R:101 var
+prf 10808:10817 SecondProject hoare_skip
+binder 10828:10828 <> P:104
+R10836:10837 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10839:10841 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10846:10848 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10850:10851 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R10838:10838 SecondProject.SecondProject <> P:104 var
+R10842:10845 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R10849:10849 SecondProject.SecondProject <> P:104 var
+prf 10962:10969 SecondProject hoare_if
+binder 10980:10980 <> P:105
+binder 10982:10982 <> Q:106
+R10987:10990 SecondProject.Imp <> bexp ind
+binder 10985:10985 <> b:107
+binder 10993:10994 <> c1:108
+binder 10996:10997 <> c2:109
+R11023:11028 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11002:11004 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11011:11014 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11017:11019 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11021:11022 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11006:11009 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R11005:11005 SecondProject.SecondProject <> P:105 var
+R11010:11010 SecondProject.SecondProject <> b:107 var
+R11015:11016 SecondProject.SecondProject <> c1:108 var
+R11020:11020 SecondProject.SecondProject <> Q:106 var
+R11051:11056 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11029:11031 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11040:11042 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11045:11047 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11049:11050 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11033:11036 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R11032:11032 SecondProject.SecondProject <> P:105 var
+R11037:11038 SecondProject.Hoare <> ::assertion_scope:'~'_x not
+R11039:11039 SecondProject.SecondProject <> b:107 var
+R11043:11044 SecondProject.SecondProject <> c2:109 var
+R11048:11048 SecondProject.SecondProject <> Q:106 var
+R11057:11058 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11060:11062 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11087:11089 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11091:11092 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11059:11059 SecondProject.SecondProject <> P:105 var
+R11063:11065 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R11067:11072 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R11075:11080 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R11083:11086 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R11066:11066 SecondProject.SecondProject <> b:107 var
+R11073:11074 SecondProject.SecondProject <> c1:108 var
+R11081:11082 SecondProject.SecondProject <> c2:109 var
+R11090:11090 SecondProject.SecondProject <> Q:106 var
+prf 11440:11450 SecondProject hoare_while
+binder 11461:11461 <> P:110
+R11466:11469 SecondProject.Imp <> bexp ind
+binder 11464:11464 <> b:111
+binder 11472:11472 <> c:112
+R11495:11500 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11477:11478 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11485:11487 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11489:11491 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11493:11494 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11480:11483 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R11479:11479 SecondProject.SecondProject <> P:110 var
+R11484:11484 SecondProject.SecondProject <> b:111 var
+R11488:11488 SecondProject.SecondProject <> c:112 var
+R11492:11492 SecondProject.SecondProject <> P:110 var
+R11501:11502 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11504:11506 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11523:11525 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11534:11535 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R11503:11503 SecondProject.SecondProject <> P:110 var
+R11507:11512 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11514:11517 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11519:11522 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11513:11513 SecondProject.SecondProject <> b:111 var
+R11518:11518 SecondProject.SecondProject <> c:112 var
+R11527:11530 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R11526:11526 SecondProject.SecondProject <> P:110 var
+R11531:11532 SecondProject.Hoare <> ::assertion_scope:'~'_x not
+R11533:11533 SecondProject.SecondProject <> b:111 var
+R11593:11594 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R11611:11612 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R11595:11600 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11602:11605 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11607:11610 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11593:11594 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R11611:11612 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R11595:11600 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11602:11605 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11607:11610 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R11788:11802 SecondProject.Hoare <> bexp_eval_false thm
+R11788:11802 SecondProject.Hoare <> bexp_eval_false thm
+R11926:11937 SecondProject.SecondProject SecondProject hoare_triple def
+R12155:12166 SecondProject.SecondProject SecondProject hoare_triple def
+prf 12540:12551 SecondProject hoare_assert
+binder 12561:12561 <> P:113
+R12567:12570 SecondProject.Imp <> bexp ind
+binder 12564:12564 <> b:114
+R12618:12620 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R12627:12629 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R12638:12641 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R12643:12645 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R12622:12625 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R12621:12621 SecondProject.SecondProject <> P:113 var
+R12626:12626 SecondProject.SecondProject <> b:114 var
+R12630:12636 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R12637:12637 SecondProject.SecondProject <> b:114 var
+R12642:12642 SecondProject.SecondProject <> P:113 var
+R12664:12675 SecondProject.SecondProject SecondProject hoare_triple def
+prf 13130:13141 SecondProject hoare_assume
+R13154:13162 SecondProject.Hoare <> Assertion def
+binder 13152:13152 <> P:115
+R13168:13171 SecondProject.Imp <> bexp ind
+binder 13166:13166 <> b:116
+R13219:13221 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13228:13231 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13240:13243 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13245:13247 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13223:13226 SecondProject.Hoare <> ::assertion_scope:x_'->'_x not
+R13222:13222 SecondProject.SecondProject <> b:116 var
+R13227:13227 SecondProject.SecondProject <> P:115 var
+R13232:13238 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R13239:13239 SecondProject.SecondProject <> b:116 var
+R13244:13244 SecondProject.SecondProject <> P:115 var
+R13266:13277 SecondProject.SecondProject SecondProject hoare_triple def
+prf 13607:13619 SecondProject hoare_choice'
+binder 13630:13631 <> P1:117
+binder 13633:13634 <> P2:118
+binder 13636:13637 <> c1:119
+binder 13639:13640 <> c2:120
+binder 13642:13643 <> Q1:121
+binder 13645:13646 <> Q2:122
+R13713:13720 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13693:13695 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13698:13701 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13704:13707 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13710:13712 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13696:13697 SecondProject.SecondProject <> P1:117 var
+R13702:13703 SecondProject.SecondProject <> c1:119 var
+R13708:13709 SecondProject.SecondProject <> Q1:121 var
+R13741:13748 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13721:13723 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13726:13729 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13732:13735 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13738:13740 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13724:13725 SecondProject.SecondProject <> P2:118 var
+R13730:13731 SecondProject.SecondProject <> c2:120 var
+R13736:13737 SecondProject.SecondProject <> Q2:122 var
+R13749:13751 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13760:13762 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13771:13774 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13783:13785 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R13754:13757 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R13752:13753 SecondProject.SecondProject <> P1:117 var
+R13758:13759 SecondProject.SecondProject <> P2:118 var
+R13765:13768 SecondProject.SecondProject SecondProject :com:com_scope:x_'!!'_x not
+R13763:13764 SecondProject.SecondProject <> c1:119 var
+R13769:13770 SecondProject.SecondProject <> c2:120 var
+R13777:13780 SecondProject.Hoare <> ::assertion_scope:x_'\/'_x not
+R13775:13776 SecondProject.SecondProject <> Q1:121 var
+R13781:13782 SecondProject.SecondProject <> Q2:122 var
+R13841:13852 SecondProject.SecondProject SecondProject hoare_triple def
+def 14590:14610 SecondProject assert_assume_example
+R14615:14617 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R14623:14628 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R14657:14662 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R14669:14671 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R14619:14621 SecondProject.Hoare <> ::assertion_scope:x_'='_x not
+R14618:14618 SecondProject.Imp <> X def
+R14643:14646 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R14629:14635 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R14636:14636 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R14642:14642 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R14638:14640 SecondProject.Imp <> :com::x_'='_x not
+R14637:14637 SecondProject.Imp <> X def
+R14648:14651 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R14647:14647 SecondProject.Imp <> X def
+R14653:14655 SecondProject.Imp <> :com::x_'+'_x not
+R14652:14652 SecondProject.Imp <> X def
+R14664:14666 SecondProject.Hoare <> ::assertion_scope:x_'='_x not
+R14663:14663 SecondProject.Imp <> X def
+R14692:14700 SecondProject.SecondProject SecondProject hoare_seq thm
+R14692:14700 SecondProject.SecondProject SecondProject hoare_seq thm
+R14715:14724 SecondProject.SecondProject SecondProject hoare_asgn thm
+R14715:14724 SecondProject.SecondProject SecondProject hoare_asgn thm
+R14740:14760 SecondProject.SecondProject SecondProject hoare_consequence_pre thm
+R14740:14760 SecondProject.SecondProject SecondProject hoare_consequence_pre thm
+R14777:14788 SecondProject.SecondProject SecondProject hoare_assume thm
+R14777:14788 SecondProject.SecondProject SecondProject hoare_assume thm
+R14806:14810 SecondProject.Hoare <> assert_implies def
+ind 15344:15348 SecondProject cstep
+constr 15418:15427 SecondProject CS_AssStep
+constr 15540:15546 SecondProject CS_Asgn
+constr 15648:15657 SecondProject CS_SeqStep
+constr 15771:15782 SecondProject CS_SeqFinish
+constr 15843:15851 SecondProject CS_IfStep
+constr 16010:16018 SecondProject CS_IfTrue
+constr 16100:16109 SecondProject CS_IfFalse
+constr 16192:16199 SecondProject CS_While
+constr 16552:16560 SecondProject CS_Assert
+constr 16815:16827 SecondProject CS_AssertTrue
+constr 17036:17049 SecondProject CS_AssertFalse
+constr 17264:17272 SecondProject CS_Assume
+constr 17527:17539 SecondProject CS_AssumeTrue
+constr 17823:17836 SecondProject CS_ChoiceRight
+constr 18017:18029 SecondProject CS_ChoiceLeft
+R15352:15352 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15365:15370 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15356:15358 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R15353:15355 SecondProject.SecondProject SecondProject com ind
+R15359:15364 SecondProject.SecondProject SecondProject result ind
+R15371:15371 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15384:15388 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15375:15377 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R15372:15374 SecondProject.SecondProject SecondProject com ind
+R15378:15383 SecondProject.SecondProject SecondProject result ind
+R18133:18137 SecondProject.SecondProject <> cstep:124 ind
+R18146:18146 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18149:18149 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18153:18153 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18139:18139 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18141:18141 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18144:18144 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 15438:15439 <> st:125
+binder 15441:15441 <> i:126
+binder 15443:15443 <> a:127
+binder 15445:15446 <> a':128
+R15469:15478 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15456:15458 SecondProject.Smallstep <> :::x_'/'_x_'-->a'_x not
+R15461:15466 SecondProject.Smallstep <> :::x_'/'_x_'-->a'_x not
+R15459:15460 SecondProject.SecondProject <> st:125 var
+R15455:15455 SecondProject.SecondProject <> a:127 var
+R15467:15468 SecondProject.SecondProject <> a':128 var
+R15491:15493 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15504:15508 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15522:15524 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15479:15481 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15488:15490 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15483:15486 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R15482:15482 SecondProject.SecondProject <> i:126 var
+R15487:15487 SecondProject.SecondProject <> a:127 var
+R15494:15500 SecondProject.SecondProject SecondProject RNormal constr
+R15502:15503 SecondProject.SecondProject <> st:125 var
+R15509:15511 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15519:15521 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15513:15516 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R15512:15512 SecondProject.SecondProject <> i:126 var
+R15517:15518 SecondProject.SecondProject <> a':128 var
+R15525:15531 SecondProject.SecondProject SecondProject RNormal constr
+R15533:15534 SecondProject.SecondProject <> st:125 var
+binder 15557:15558 <> st:129
+binder 15560:15560 <> i:130
+binder 15562:15562 <> n:131
+R15590:15592 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15603:15607 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15618:15620 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15571:15573 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15587:15589 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15575:15578 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R15574:15574 SecondProject.SecondProject <> i:130 var
+R15579:15579 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R15586:15586 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R15584:15584 SecondProject.Imp <> :com:com_scope:x_x_'..'_x not
+R15585:15585 SecondProject.SecondProject <> n:131 var
+R15580:15583 SecondProject.Imp <> ANum constr
+R15593:15599 SecondProject.SecondProject SecondProject RNormal constr
+R15601:15602 SecondProject.SecondProject <> st:129 var
+R15608:15610 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15615:15617 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15611:15614 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R15621:15627 SecondProject.SecondProject SecondProject RNormal constr
+R15631:15635 SecondProject.Maps <> :::x_'!->'_x_';'_x not
+R15637:15639 SecondProject.Maps <> :::x_'!->'_x_';'_x not
+R15640:15641 SecondProject.SecondProject <> st:129 var
+R15630:15630 SecondProject.SecondProject <> i:130 var
+R15636:15636 SecondProject.SecondProject <> n:131 var
+binder 15668:15669 <> st:132
+binder 15671:15672 <> c1:133
+binder 15674:15676 <> c1':134
+binder 15678:15680 <> st':135
+binder 15682:15683 <> c2:136
+R15713:15722 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15694:15696 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15699:15703 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15707:15709 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15692:15693 SecondProject.SecondProject <> c1:133 var
+R15697:15698 SecondProject.SecondProject <> st:132 var
+R15704:15706 SecondProject.SecondProject <> c1':134 var
+R15710:15712 SecondProject.SecondProject <> st':135 var
+R15736:15738 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15741:15745 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15760:15762 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15723:15725 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15733:15735 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15728:15730 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R15726:15727 SecondProject.SecondProject <> c1:133 var
+R15731:15732 SecondProject.SecondProject <> c2:136 var
+R15739:15740 SecondProject.SecondProject <> st:132 var
+R15746:15748 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15757:15759 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15752:15754 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R15749:15751 SecondProject.SecondProject <> c1':134 var
+R15755:15756 SecondProject.SecondProject <> c2:136 var
+R15763:15765 SecondProject.SecondProject <> st':135 var
+binder 15793:15794 <> st:137
+binder 15796:15797 <> c2:138
+R15821:15823 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15826:15830 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15833:15835 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15806:15808 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15818:15820 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15813:15815 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R15809:15812 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R15816:15817 SecondProject.SecondProject <> c2:138 var
+R15824:15825 SecondProject.SecondProject <> st:137 var
+R15831:15832 SecondProject.SecondProject <> c2:138 var
+R15836:15837 SecondProject.SecondProject <> st:137 var
+binder 15862:15863 <> st:139
+binder 15865:15865 <> b:140
+binder 15867:15868 <> b':141
+binder 15870:15871 <> c1:142
+binder 15873:15874 <> c2:143
+R15897:15906 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R15884:15886 SecondProject.Smallstep <> :::x_'/'_x_'-->b'_x not
+R15889:15894 SecondProject.Smallstep <> :::x_'/'_x_'-->b'_x not
+R15887:15888 SecondProject.SecondProject <> st:139 var
+R15883:15883 SecondProject.SecondProject <> b:140 var
+R15895:15896 SecondProject.SecondProject <> b':141 var
+R15936:15938 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15949:15960 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15992:15994 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R15907:15908 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15933:15935 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15909:15911 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15913:15918 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15921:15926 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15929:15932 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15912:15912 SecondProject.SecondProject <> b:140 var
+R15919:15920 SecondProject.SecondProject <> c1:142 var
+R15927:15928 SecondProject.SecondProject <> c2:143 var
+R15939:15945 SecondProject.SecondProject SecondProject RNormal constr
+R15947:15948 SecondProject.SecondProject <> st:139 var
+R15961:15963 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15989:15991 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R15964:15966 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15969:15974 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15977:15982 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15985:15988 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R15967:15968 SecondProject.SecondProject <> b':141 var
+R15975:15976 SecondProject.SecondProject <> c1:142 var
+R15983:15984 SecondProject.SecondProject <> c2:143 var
+R15995:16001 SecondProject.SecondProject SecondProject RNormal constr
+R16003:16004 SecondProject.SecondProject <> st:139 var
+binder 16029:16030 <> st:144
+binder 16032:16033 <> c1:145
+binder 16035:16036 <> c2:146
+R16078:16080 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16083:16087 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16090:16092 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16045:16047 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16075:16077 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16048:16050 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16055:16060 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16063:16068 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16071:16074 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16051:16054 SecondProject.Imp <> :com::'true' not
+R16061:16062 SecondProject.SecondProject <> c1:145 var
+R16069:16070 SecondProject.SecondProject <> c2:146 var
+R16081:16082 SecondProject.SecondProject <> st:144 var
+R16088:16089 SecondProject.SecondProject <> c1:145 var
+R16093:16094 SecondProject.SecondProject <> st:144 var
+binder 16120:16121 <> st:147
+binder 16123:16124 <> c1:148
+binder 16126:16127 <> c2:149
+R16170:16172 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16175:16179 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16182:16184 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16136:16138 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16167:16169 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16139:16141 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16147:16152 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16155:16160 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16163:16166 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16142:16146 SecondProject.Imp <> :com::'false' not
+R16153:16154 SecondProject.SecondProject <> c1:148 var
+R16161:16162 SecondProject.SecondProject <> c2:149 var
+R16173:16174 SecondProject.SecondProject <> st:147 var
+R16180:16181 SecondProject.SecondProject <> c2:149 var
+R16185:16186 SecondProject.SecondProject <> st:147 var
+binder 16210:16211 <> st:150
+binder 16213:16213 <> b:151
+binder 16215:16216 <> c1:152
+R16250:16252 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16255:16266 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16320:16322 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16229:16230 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16248:16249 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16231:16236 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R16238:16241 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R16244:16247 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R16237:16237 SecondProject.SecondProject <> b:151 var
+R16242:16243 SecondProject.SecondProject <> c1:152 var
+R16253:16254 SecondProject.SecondProject <> st:150 var
+R16267:16269 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16317:16319 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16270:16272 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16274:16279 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16303:16308 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16313:16316 SecondProject.SecondProject SecondProject :com:com_scope:'if'_x_'then'_x_'else'_x_'end' not
+R16273:16273 SecondProject.SecondProject <> b:151 var
+R16280:16280 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R16302:16302 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R16283:16284 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R16281:16282 SecondProject.SecondProject <> c1:152 var
+R16285:16290 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R16292:16295 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R16298:16301 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R16291:16291 SecondProject.SecondProject <> b:151 var
+R16296:16297 SecondProject.SecondProject <> c1:152 var
+R16309:16312 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R16323:16324 SecondProject.SecondProject <> st:150 var
+binder 16570:16571 <> st:153
+binder 16573:16573 <> b:154
+binder 16575:16576 <> b':155
+R16599:16608 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16586:16588 SecondProject.Smallstep <> :::x_'/'_x_'-->b'_x not
+R16591:16596 SecondProject.Smallstep <> :::x_'/'_x_'-->b'_x not
+R16589:16590 SecondProject.SecondProject <> st:153 var
+R16585:16585 SecondProject.SecondProject <> b:154 var
+R16597:16598 SecondProject.SecondProject <> b':155 var
+R16623:16625 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16636:16640 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16656:16658 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16609:16611 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16620:16622 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16612:16618 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R16619:16619 SecondProject.SecondProject <> b:154 var
+R16626:16632 SecondProject.SecondProject SecondProject RNormal constr
+R16634:16635 SecondProject.SecondProject <> st:153 var
+R16641:16643 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16653:16655 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16644:16650 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R16651:16652 SecondProject.SecondProject <> b':155 var
+R16659:16665 SecondProject.SecondProject SecondProject RNormal constr
+R16667:16668 SecondProject.SecondProject <> st:153 var
+binder 16837:16838 <> st:156
+R16864:16866 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16869:16873 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16884:16886 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R16847:16849 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16861:16863 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16850:16856 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R16857:16860 SecondProject.Imp <> :com::'true' not
+R16867:16868 SecondProject.SecondProject <> st:156 var
+R16874:16876 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16881:16883 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R16877:16880 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R16887:16888 SecondProject.SecondProject <> st:156 var
+binder 17059:17060 <> st:157
+R17087:17089 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17092:17096 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17107:17109 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17069:17071 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17084:17086 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17072:17078 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R17079:17083 SecondProject.Imp <> :com::'false' not
+R17090:17091 SecondProject.SecondProject <> st:157 var
+R17097:17099 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17104:17106 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17100:17103 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R17110:17115 SecondProject.SecondProject SecondProject RError constr
+binder 17282:17283 <> st:158
+binder 17285:17285 <> b:159
+binder 17287:17288 <> b':160
+R17311:17320 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17298:17300 SecondProject.Smallstep <> :::x_'/'_x_'-->b'_x not
+R17303:17308 SecondProject.Smallstep <> :::x_'/'_x_'-->b'_x not
+R17301:17302 SecondProject.SecondProject <> st:158 var
+R17297:17297 SecondProject.SecondProject <> b:159 var
+R17309:17310 SecondProject.SecondProject <> b':160 var
+R17335:17337 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17348:17352 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17368:17370 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17321:17323 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17332:17334 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17324:17330 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R17331:17331 SecondProject.SecondProject <> b:159 var
+R17338:17344 SecondProject.SecondProject SecondProject RNormal constr
+R17346:17347 SecondProject.SecondProject <> st:158 var
+R17353:17355 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17365:17367 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17356:17362 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R17363:17364 SecondProject.SecondProject <> b':160 var
+R17371:17377 SecondProject.SecondProject SecondProject RNormal constr
+R17379:17380 SecondProject.SecondProject <> st:158 var
+binder 17549:17550 <> st:161
+R17576:17578 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17589:17593 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17604:17606 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17559:17561 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17573:17575 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17562:17568 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R17569:17572 SecondProject.Imp <> :com::'true' not
+R17579:17585 SecondProject.SecondProject SecondProject RNormal constr
+R17587:17588 SecondProject.SecondProject <> st:161 var
+R17594:17596 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17601:17603 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17597:17600 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R17607:17613 SecondProject.SecondProject SecondProject RNormal constr
+R17615:17616 SecondProject.SecondProject <> st:161 var
+binder 17846:17847 <> c1:162
+binder 17849:17850 <> c2:163
+binder 17852:17852 <> r:164
+R17875:17877 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17879:17883 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17892:17894 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R17861:17863 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17872:17874 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17866:17869 SecondProject.SecondProject SecondProject :com:com_scope:x_'!!'_x not
+R17864:17865 SecondProject.SecondProject <> c1:162 var
+R17870:17871 SecondProject.SecondProject <> c2:163 var
+R17878:17878 SecondProject.SecondProject <> r:164 var
+R17884:17886 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17889:17891 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R17887:17888 SecondProject.SecondProject <> c2:163 var
+R17895:17895 SecondProject.SecondProject <> r:164 var
+binder 18039:18040 <> c1:165
+binder 18042:18043 <> c2:166
+binder 18045:18045 <> r:167
+R18068:18070 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R18072:18076 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R18085:18087 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->'_x_'/'_x not
+R18054:18056 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R18065:18067 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R18059:18062 SecondProject.SecondProject SecondProject :com:com_scope:x_'!!'_x not
+R18057:18058 SecondProject.SecondProject <> c1:165 var
+R18063:18064 SecondProject.SecondProject <> c2:166 var
+R18071:18071 SecondProject.SecondProject <> r:167 var
+R18077:18079 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R18082:18084 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R18080:18081 SecondProject.SecondProject <> c1:165 var
+R18088:18088 SecondProject.SecondProject <> r:167 var
+R18133:18137 SecondProject.SecondProject SecondProject cstep ind
+R18139:18139 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18141:18141 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18144:18144 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18146:18146 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18149:18149 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18153:18153 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+not 18099:18099 SecondProject :::x_'/'_x_'-->'_x_'/'_x
+def 18169:18178 SecondProject cmultistep
+R18183:18187 SecondProject.Smallstep <> multi ind
+R18189:18193 SecondProject.SecondProject SecondProject cstep ind
+R18244:18248 SecondProject.Smallstep <> multi ind
+R18264:18264 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18267:18267 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18271:18271 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18257:18257 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18259:18259 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18262:18262 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18250:18254 SecondProject.SecondProject SecondProject cstep ind
+not 18206:18206 SecondProject :::x_'/'_x_'-->*'_x_'/'_x
+def 18876:18880 SecondProject prog0
+R18884:18886 SecondProject.SecondProject SecondProject com ind
+R18893:18895 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R18919:18921 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R18906:18908 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R18897:18900 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R18896:18896 SecondProject.Imp <> X def
+R18902:18904 SecondProject.Imp <> :com::x_'+'_x not
+R18901:18901 SecondProject.Imp <> X def
+R18910:18913 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R18909:18909 SecondProject.Imp <> X def
+R18915:18917 SecondProject.Imp <> :com::x_'+'_x not
+R18914:18914 SecondProject.Imp <> X def
+def 18933:18945 SecondProject prog0_example
+R18950:18956 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R18960:18968 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 18957:18959 <> st':168
+R19024:19031 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R18974:18976 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->*'_x_'/'_x not
+R18994:18999 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->*'_x_'/'_x not
+R19010:19012 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->*'_x_'/'_x not
+R18969:18973 SecondProject.SecondProject SecondProject prog0 def
+R18977:18983 SecondProject.SecondProject SecondProject RNormal constr
+R18987:18991 SecondProject.Imp <> :::x_'!->'_x not
+R18986:18986 SecondProject.Imp <> X def
+R19000:19002 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R19007:19009 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R19003:19006 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R19013:19019 SecondProject.SecondProject SecondProject RNormal constr
+R19021:19023 SecondProject.SecondProject <> st':168 var
+R19037:19039 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19032:19034 SecondProject.SecondProject <> st':168 var
+R19036:19036 SecondProject.Imp <> X def
+R19077:19081 SecondProject.SecondProject SecondProject prog0 def
+R19123:19132 SecondProject.Smallstep <> multi_step constr
+R19123:19132 SecondProject.Smallstep <> multi_step constr
+R19141:19150 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19141:19150 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19162:19171 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19162:19171 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19180:19187 SecondProject.Smallstep <> AS_Plus1 constr
+R19180:19187 SecondProject.Smallstep <> AS_Plus1 constr
+R19196:19200 SecondProject.Smallstep <> AS_Id constr
+R19196:19200 SecondProject.Smallstep <> AS_Id constr
+R19212:19221 SecondProject.Smallstep <> multi_step constr
+R19212:19221 SecondProject.Smallstep <> multi_step constr
+R19230:19239 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19230:19239 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19248:19257 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19248:19257 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19266:19272 SecondProject.Smallstep <> AS_Plus constr
+R19266:19272 SecondProject.Smallstep <> AS_Plus constr
+R19291:19300 SecondProject.Smallstep <> multi_step constr
+R19291:19300 SecondProject.Smallstep <> multi_step constr
+R19309:19318 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19309:19318 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19327:19333 SecondProject.SecondProject SecondProject CS_Asgn constr
+R19327:19333 SecondProject.SecondProject SecondProject CS_Asgn constr
+R19343:19352 SecondProject.Smallstep <> multi_step constr
+R19343:19352 SecondProject.Smallstep <> multi_step constr
+R19364:19375 SecondProject.SecondProject SecondProject CS_SeqFinish constr
+R19364:19375 SecondProject.SecondProject SecondProject CS_SeqFinish constr
+R19407:19416 SecondProject.Smallstep <> multi_step constr
+R19407:19416 SecondProject.Smallstep <> multi_step constr
+R19425:19434 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19425:19434 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19443:19450 SecondProject.Smallstep <> AS_Plus1 constr
+R19443:19450 SecondProject.Smallstep <> AS_Plus1 constr
+R19459:19463 SecondProject.Smallstep <> AS_Id constr
+R19459:19463 SecondProject.Smallstep <> AS_Id constr
+R19475:19484 SecondProject.Smallstep <> multi_step constr
+R19475:19484 SecondProject.Smallstep <> multi_step constr
+R19493:19502 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19493:19502 SecondProject.SecondProject SecondProject CS_AssStep constr
+R19511:19517 SecondProject.Smallstep <> AS_Plus constr
+R19511:19517 SecondProject.Smallstep <> AS_Plus constr
+R19536:19545 SecondProject.Smallstep <> multi_step constr
+R19536:19545 SecondProject.Smallstep <> multi_step constr
+R19554:19560 SecondProject.SecondProject SecondProject CS_Asgn constr
+R19554:19560 SecondProject.SecondProject SecondProject CS_Asgn constr
+R19570:19579 SecondProject.Smallstep <> multi_refl constr
+R19570:19579 SecondProject.Smallstep <> multi_refl constr
+def 19619:19623 SecondProject prog1
+R19627:19629 SecondProject.SecondProject SecondProject com ind
+R19636:19641 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R19704:19708 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R19656:19659 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R19642:19648 SecondProject.SecondProject SecondProject :com::'assume'_x not
+R19649:19649 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19655:19655 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19651:19653 SecondProject.Imp <> :com::x_'='_x not
+R19650:19650 SecondProject.Imp <> X def
+R19686:19689 SecondProject.SecondProject SecondProject :com:com_scope:x_';'_x not
+R19660:19660 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19685:19685 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19673:19676 SecondProject.SecondProject SecondProject :com:com_scope:x_'!!'_x not
+R19661:19661 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19672:19672 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19663:19666 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R19662:19662 SecondProject.Imp <> X def
+R19668:19670 SecondProject.Imp <> :com::x_'+'_x not
+R19667:19667 SecondProject.Imp <> X def
+R19677:19677 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19684:19684 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19679:19682 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R19678:19678 SecondProject.Imp <> X def
+R19690:19696 SecondProject.SecondProject SecondProject :com::'assert'_x not
+R19697:19697 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19703:19703 SecondProject.Imp <> :com:com_scope:'('_x_')' not
+R19699:19701 SecondProject.Imp <> :com::x_'='_x not
+R19698:19698 SecondProject.Imp <> X def
+def 19720:19733 SecondProject prog1_example1
+R19738:19744 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R19748:19756 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 19745:19747 <> st':169
+R19812:19819 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R19762:19764 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->*'_x_'/'_x not
+R19782:19787 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->*'_x_'/'_x not
+R19798:19800 SecondProject.SecondProject SecondProject :::x_'/'_x_'-->*'_x_'/'_x not
+R19757:19761 SecondProject.SecondProject SecondProject prog1 def
+R19765:19771 SecondProject.SecondProject SecondProject RNormal constr
+R19775:19779 SecondProject.Imp <> :::x_'!->'_x not
+R19774:19774 SecondProject.Imp <> X def
+R19788:19790 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R19795:19797 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R19791:19794 SecondProject.SecondProject SecondProject :com:com_scope:'skip' not
+R19801:19807 SecondProject.SecondProject SecondProject RNormal constr
+R19809:19811 SecondProject.SecondProject <> st':169 var
+R19825:19827 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19820:19822 SecondProject.SecondProject <> st':169 var
+R19824:19824 SecondProject.Imp <> X def
+R19865:19869 SecondProject.SecondProject SecondProject prog1 def
+R19917:19926 SecondProject.Smallstep <> multi_step constr
+R19936:19945 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19954:19962 SecondProject.SecondProject SecondProject CS_Assume constr
+R19971:19976 SecondProject.Smallstep <> BS_Eq1 constr
+R19985:19989 SecondProject.Smallstep <> AS_Id constr
+R19917:19926 SecondProject.Smallstep <> multi_step constr
+R19936:19945 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R19954:19962 SecondProject.SecondProject SecondProject CS_Assume constr
+R19971:19976 SecondProject.Smallstep <> BS_Eq1 constr
+R19985:19989 SecondProject.Smallstep <> AS_Id constr
+R20046:20055 SecondProject.Smallstep <> multi_step constr
+R20065:20074 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20083:20091 SecondProject.SecondProject SecondProject CS_Assume constr
+R20100:20104 SecondProject.Smallstep <> BS_Eq constr
+R20046:20055 SecondProject.Smallstep <> multi_step constr
+R20065:20074 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20083:20091 SecondProject.SecondProject SecondProject CS_Assume constr
+R20100:20104 SecondProject.Smallstep <> BS_Eq constr
+R20167:20176 SecondProject.Smallstep <> multi_step constr
+R20186:20195 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20204:20216 SecondProject.SecondProject SecondProject CS_AssumeTrue constr
+R20167:20176 SecondProject.Smallstep <> multi_step constr
+R20186:20195 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20204:20216 SecondProject.SecondProject SecondProject CS_AssumeTrue constr
+R20274:20283 SecondProject.Smallstep <> multi_step constr
+R20293:20304 SecondProject.SecondProject SecondProject CS_SeqFinish constr
+R20274:20283 SecondProject.Smallstep <> multi_step constr
+R20293:20304 SecondProject.SecondProject SecondProject CS_SeqFinish constr
+R20382:20391 SecondProject.Smallstep <> multi_step constr
+R20401:20410 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20419:20431 SecondProject.SecondProject SecondProject CS_ChoiceLeft constr
+R20382:20391 SecondProject.Smallstep <> multi_step constr
+R20401:20410 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20419:20431 SecondProject.SecondProject SecondProject CS_ChoiceLeft constr
+R20481:20490 SecondProject.Smallstep <> multi_step constr
+R20500:20509 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20518:20527 SecondProject.SecondProject SecondProject CS_AssStep constr
+R20536:20543 SecondProject.Smallstep <> AS_Plus1 constr
+R20552:20556 SecondProject.Smallstep <> AS_Id constr
+R20481:20490 SecondProject.Smallstep <> multi_step constr
+R20500:20509 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20518:20527 SecondProject.SecondProject SecondProject CS_AssStep constr
+R20536:20543 SecondProject.Smallstep <> AS_Plus1 constr
+R20552:20556 SecondProject.Smallstep <> AS_Id constr
+R20613:20622 SecondProject.Smallstep <> multi_step constr
+R20632:20641 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20650:20659 SecondProject.SecondProject SecondProject CS_AssStep constr
+R20668:20674 SecondProject.Smallstep <> AS_Plus constr
+R20613:20622 SecondProject.Smallstep <> multi_step constr
+R20632:20641 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20650:20659 SecondProject.SecondProject SecondProject CS_AssStep constr
+R20668:20674 SecondProject.Smallstep <> AS_Plus constr
+R20730:20739 SecondProject.Smallstep <> multi_step constr
+R20749:20758 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20767:20773 SecondProject.SecondProject SecondProject CS_Asgn constr
+R20730:20739 SecondProject.Smallstep <> multi_step constr
+R20749:20758 SecondProject.SecondProject SecondProject CS_SeqStep constr
+R20767:20773 SecondProject.SecondProject SecondProject CS_Asgn constr
+R20831:20840 SecondProject.Smallstep <> multi_step constr
+R20850:20861 SecondProject.SecondProject SecondProject CS_SeqFinish constr
+R20831:20840 SecondProject.Smallstep <> multi_step constr
+R20850:20861 SecondProject.SecondProject SecondProject CS_SeqFinish constr
+R20898:20907 SecondProject.Smallstep <> multi_step constr
+R20917:20925 SecondProject.SecondProject SecondProject CS_Assert constr
+R20934:20939 SecondProject.Smallstep <> BS_Eq1 constr
+R20948:20952 SecondProject.Smallstep <> AS_Id constr
+R20898:20907 SecondProject.Smallstep <> multi_step constr
+R20917:20925 SecondProject.SecondProject SecondProject CS_Assert constr
+R20934:20939 SecondProject.Smallstep <> BS_Eq1 constr
+R20948:20952 SecondProject.Smallstep <> AS_Id constr
+R21007:21016 SecondProject.Smallstep <> multi_step constr
+R21026:21034 SecondProject.SecondProject SecondProject CS_Assert constr
+R21043:21047 SecondProject.Smallstep <> BS_Eq constr
+R21007:21016 SecondProject.Smallstep <> multi_step constr
+R21026:21034 SecondProject.SecondProject SecondProject CS_Assert constr
+R21043:21047 SecondProject.Smallstep <> BS_Eq constr
+R21108:21117 SecondProject.Smallstep <> multi_step constr
+R21127:21139 SecondProject.SecondProject SecondProject CS_AssertTrue constr
+R21108:21117 SecondProject.Smallstep <> multi_step constr
+R21127:21139 SecondProject.SecondProject SecondProject CS_AssertTrue constr
+R21152:21161 SecondProject.Smallstep <> multi_refl constr
+R21152:21161 SecondProject.Smallstep <> multi_refl constr
+prf 21406:21421 SecondProject one_step_aeval_a
+binder 21431:21432 <> st:170
+binder 21434:21434 <> a:171
+binder 21436:21437 <> a':172
+R21456:21461 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21443:21445 SecondProject.Smallstep <> :::x_'/'_x_'-->a'_x not
+R21448:21453 SecondProject.Smallstep <> :::x_'/'_x_'-->a'_x not
+R21446:21447 SecondProject.SecondProject <> st:170 var
+R21442:21442 SecondProject.SecondProject <> a:171 var
+R21454:21455 SecondProject.SecondProject <> a':172 var
+R21472:21474 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21462:21466 SecondProject.Imp <> aeval def
+R21468:21469 SecondProject.SecondProject <> st:170 var
+R21471:21471 SecondProject.SecondProject <> a:171 var
+R21475:21479 SecondProject.Imp <> aeval def
+R21481:21482 SecondProject.SecondProject <> st:170 var
+R21484:21485 SecondProject.SecondProject <> a':172 var
+mod 22366:22369 <> SecondProject.DCom
+ind 24735:24738 SecondProject.DCom dcom
+constr 24752:24757 SecondProject.DCom DCSkip
+constr 24798:24802 SecondProject.DCom DCSeq
+constr 24837:24842 SecondProject.DCom DCAsgn
+constr 24909:24912 SecondProject.DCom DCIf
+constr 25067:25073 SecondProject.DCom DCWhile
+constr 25182:25186 SecondProject.DCom DCPre
+constr 25239:25244 SecondProject.DCom DCPost
+constr 25297:25304 SecondProject.DCom DCAssert
+constr 25366:25373 SecondProject.DCom DCAssume
+constr 25435:25448 SecondProject.DCom DCNonDetChoice
+R24764:24772 SecondProject.Hoare <> Assertion def
+binder 24760:24760 <> Q:175
+R24813:24816 SecondProject.SecondProject <> dcom:173 ind
+binder 24805:24806 <> d1:176
+binder 24808:24809 <> d2:177
+R24849:24854 Coq.Strings.String <> string ind
+binder 24845:24845 <> X:178
+R24862:24865 SecondProject.Imp <> aexp ind
+binder 24858:24858 <> a:179
+R24873:24881 SecondProject.Hoare <> Assertion def
+binder 24869:24869 <> Q:180
+R24919:24922 SecondProject.Imp <> bexp ind
+binder 24915:24915 <> b:181
+R24931:24939 SecondProject.Hoare <> Assertion def
+binder 24926:24927 <> P1:182
+R24948:24951 SecondProject.SecondProject <> dcom:173 ind
+binder 24943:24944 <> d1:183
+R24967:24975 SecondProject.Hoare <> Assertion def
+binder 24962:24963 <> P2:184
+R24984:24987 SecondProject.SecondProject <> dcom:173 ind
+binder 24979:24980 <> d2:185
+R24995:25003 SecondProject.Hoare <> Assertion def
+binder 24991:24991 <> Q:186
+R25080:25083 SecondProject.Imp <> bexp ind
+binder 25076:25076 <> b:187
+R25091:25099 SecondProject.Hoare <> Assertion def
+binder 25087:25087 <> P:188
+R25107:25110 SecondProject.SecondProject <> dcom:173 ind
+binder 25103:25103 <> d:189
+R25128:25136 SecondProject.Hoare <> Assertion def
+binder 25124:25124 <> Q:190
+R25193:25201 SecondProject.Hoare <> Assertion def
+binder 25189:25189 <> P:191
+R25209:25212 SecondProject.SecondProject <> dcom:173 ind
+binder 25205:25205 <> d:192
+R25251:25254 SecondProject.SecondProject <> dcom:173 ind
+binder 25247:25247 <> d:193
+R25262:25270 SecondProject.Hoare <> Assertion def
+binder 25258:25258 <> Q:194
+R25311:25319 SecondProject.Hoare <> Assertion def
+binder 25307:25307 <> P:195
+R25327:25330 SecondProject.Imp <> bexp ind
+binder 25323:25323 <> b:196
+R25380:25388 SecondProject.Hoare <> Assertion def
+binder 25376:25376 <> P:197
+R25396:25399 SecondProject.Imp <> bexp ind
+binder 25392:25392 <> b:198
+R25459:25462 SecondProject.SecondProject <> dcom:173 ind
+binder 25451:25452 <> d1:199
+binder 25454:25455 <> d2:200
+R25470:25478 SecondProject.Hoare <> Assertion def
+binder 25466:25466 <> Q:201
+ind 25653:25661 SecondProject.DCom decorated
+constr 25677:25685 SecondProject.DCom Decorated
+R25698:25701 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25689:25697 SecondProject.Hoare <> Assertion def
+R25706:25709 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25702:25705 SecondProject.SecondProject SecondProject.DCom dcom ind
+R25710:25718 SecondProject.SecondProject <> decorated:202 ind
+R25941:25946 SecondProject.SecondProject SecondProject.DCom DCSkip constr
+not 25914:25914 SecondProject.DCom :com:dcom_scope:'skip'_'{{'_x_'}}'
+R26046:26051 SecondProject.SecondProject SecondProject.DCom DCAsgn constr
+not 26017:26017 SecondProject.DCom :com:dcom_scope:x_':='_x_'{{'_x_'}}'
+R26260:26266 SecondProject.SecondProject SecondProject.DCom DCWhile constr
+not 26201:26201 SecondProject.DCom :com:dcom_scope:'while'_x_'do'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}'
+R26483:26486 SecondProject.SecondProject SecondProject.DCom DCIf constr
+not 26414:26414 SecondProject.DCom :com:dcom_scope:'if'_x_'then'_'{{'_x_'}}'_x_'else'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}'
+R26667:26671 SecondProject.SecondProject SecondProject.DCom DCPre constr
+not 26639:26639 SecondProject.DCom :com:dcom_scope:'->>'_'{{'_x_'}}'_x
+R26794:26799 SecondProject.SecondProject SecondProject.DCom DCPost constr
+not 26766:26766 SecondProject.DCom :com:dcom_scope:x_'->>'_'{{'_x_'}}'
+R26915:26919 SecondProject.SecondProject SecondProject.DCom DCSeq constr
+not 26894:26894 SecondProject.DCom :com:dcom_scope:x_';'_x
+R27027:27035 SecondProject.SecondProject SecondProject.DCom Decorated constr
+not 27005:27005 SecondProject.DCom :com:dcom_scope:'{{'_x_'}}'_x
+R27166:27173 SecondProject.SecondProject SecondProject.DCom DCAssert constr
+not 27129:27129 SecondProject.DCom :com:dcom_scope:'assert'_'{{'_x_'}}'_'{{'_x_'}}'
+R27314:27321 SecondProject.SecondProject SecondProject.DCom DCAssume constr
+not 27277:27277 SecondProject.DCom :com:dcom_scope:'assume'_'{{'_x_'}}'_'{{'_x_'}}'
+R27460:27473 SecondProject.SecondProject SecondProject.DCom DCNonDetChoice constr
+not 27425:27425 SecondProject.DCom :com:dcom_scope:x_'!!'_x_'{{'_x_'}}'
+def 27698:27706 SecondProject.DCom dec_while
+R27710:27718 SecondProject.SecondProject SecondProject.DCom decorated ind
+R27725:27729 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R27897:27899 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R27730:27732 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'{{'_x_'}}'_x not
+R27737:27744 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'{{'_x_'}}'_x not
+R27733:27736 Coq.Init.Logic <> True ind
+R27879:27888 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:x_'->>'_'{{'_x_'}}' not
+R27894:27896 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:x_'->>'_'{{'_x_'}}' not
+R27745:27750 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'while'_x_'do'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}' not
+R27757:27784 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'while'_x_'do'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}' not
+R27801:27810 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'while'_x_'do'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}' not
+R27849:27862 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'while'_x_'do'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}' not
+R27877:27878 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:'while'_x_'do'_'{{'_x_'}}'_x_'end'_'{{'_x_'}}' not
+R27752:27755 SecondProject.Imp <> :com::x_'<>'_x not
+R27751:27751 SecondProject.Imp <> X def
+R27789:27793 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R27800:27800 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R27785:27788 Coq.Init.Logic <> True ind
+R27795:27798 SecondProject.Hoare <> ::assertion_scope:x_'<>'_x not
+R27794:27794 SecondProject.Imp <> X def
+R27812:27815 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:x_':='_x_'{{'_x_'}}' not
+R27821:27841 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:x_':='_x_'{{'_x_'}}' not
+R27846:27848 SecondProject.SecondProject SecondProject.DCom :com:dcom_scope:x_':='_x_'{{'_x_'}}' not
+R27811:27811 SecondProject.Imp <> X def
+R27817:27819 SecondProject.Imp <> :com::x_'-'_x not
+R27816:27816 SecondProject.Imp <> X def
+R27842:27845 Coq.Init.Logic <> True ind
+R27867:27871 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R27863:27866 Coq.Init.Logic <> True ind
+R27873:27875 SecondProject.Hoare <> ::assertion_scope:x_'='_x not
+R27872:27872 SecondProject.Imp <> X def
+R27890:27892 SecondProject.Hoare <> ::assertion_scope:x_'='_x not
+R27889:27889 SecondProject.Imp <> X def
+def 28285:28291 SecondProject.DCom extract
+R28298:28301 SecondProject.SecondProject SecondProject.DCom dcom ind
+binder 28294:28294 <> d:204
+R28306:28308 SecondProject.SecondProject SecondProject com ind
+R28321:28321 SecondProject.SecondProject <> d:204 var
+R28332:28337 SecondProject.SecondProject SecondProject.DCom DCSkip constr
+R28354:28358 SecondProject.SecondProject SecondProject CSkip constr
+R28364:28368 SecondProject.SecondProject SecondProject.DCom DCSeq constr
+R28386:28389 SecondProject.SecondProject SecondProject CSeq constr
+R28392:28398 SecondProject.SecondProject <> extract:205 def
+R28405:28411 SecondProject.SecondProject <> extract:205 def
+R28421:28426 SecondProject.SecondProject SecondProject.DCom DCAsgn constr
+R28428:28428 SecondProject.Imp <> X def
+R28443:28447 SecondProject.SecondProject SecondProject CAsgn constr
+R28457:28460 SecondProject.SecondProject SecondProject.DCom DCIf constr
+R28479:28481 SecondProject.SecondProject SecondProject CIf constr
+R28486:28492 SecondProject.SecondProject <> extract:205 def
+R28499:28505 SecondProject.SecondProject <> extract:205 def
+R28515:28521 SecondProject.SecondProject SecondProject.DCom DCWhile constr
+R28537:28542 SecondProject.SecondProject SecondProject CWhile constr
+R28547:28553 SecondProject.SecondProject <> extract:205 def
+R28555:28555 SecondProject.SecondProject <> d:204 var
+R28562:28566 SecondProject.SecondProject SecondProject.DCom DCPre constr
+R28584:28590 SecondProject.SecondProject <> extract:205 def
+R28592:28592 SecondProject.SecondProject <> d:204 var
+R28598:28603 SecondProject.SecondProject SecondProject.DCom DCPost constr
+R28620:28626 SecondProject.SecondProject <> extract:205 def
+R28628:28628 SecondProject.SecondProject <> d:204 var
+R28647:28654 SecondProject.SecondProject SecondProject.DCom DCAssert constr
+R28669:28675 SecondProject.SecondProject SecondProject CAssert constr
+R28683:28690 SecondProject.SecondProject SecondProject.DCom DCAssume constr
+R28705:28711 SecondProject.SecondProject SecondProject CAssume constr
+R28719:28732 SecondProject.SecondProject SecondProject.DCom DCNonDetChoice constr
+R28745:28757 SecondProject.SecondProject SecondProject CNonDetChoice constr
+R28760:28766 SecondProject.SecondProject <> extract:205 def
+R28773:28779 SecondProject.SecondProject <> extract:205 def
+def 28804:28814 SecondProject.DCom extract_dec
+R28823:28831 SecondProject.SecondProject SecondProject.DCom decorated ind
+binder 28817:28819 <> dec:207
+R28836:28838 SecondProject.SecondProject SecondProject com ind
+R28851:28853 SecondProject.SecondProject <> dec:207 var
+R28864:28872 SecondProject.SecondProject SecondProject.DCom Decorated constr
+R28881:28887 SecondProject.SecondProject SecondProject.DCom extract def
+def 28907:28922 SecondProject.DCom extract_while_ex
+R28951:28955 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28930:28940 SecondProject.SecondProject SecondProject.DCom extract_dec def
+R28942:28950 SecondProject.SecondProject SecondProject.DCom dec_while ex
+R28956:28957 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R28988:28989 SecondProject.Imp <> ::com_scope:'<{'_x_'}>' not
+R28958:28963 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R28970:28973 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R28984:28987 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R28965:28968 SecondProject.Imp <> :com::x_'<>'_x not
+R28964:28964 SecondProject.Imp <> X def
+R28975:28978 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R28974:28974 SecondProject.Imp <> X def
+R28980:28982 SecondProject.Imp <> :com::x_'-'_x not
+R28979:28979 SecondProject.Imp <> X def
+R29008:29016 SecondProject.SecondProject SecondProject.DCom dec_while ex
+def 29162:29168 SecondProject.DCom pre_dec
+R29177:29185 SecondProject.SecondProject SecondProject.DCom decorated ind
+binder 29171:29173 <> dec:209
+R29190:29198 SecondProject.Hoare <> Assertion def
+R29211:29213 SecondProject.SecondProject <> dec:209 var
+R29224:29232 SecondProject.SecondProject SecondProject.DCom Decorated constr
+def 29260:29263 SecondProject.DCom post
+R29270:29273 SecondProject.SecondProject SecondProject.DCom dcom ind
+binder 29266:29266 <> d:211
+R29278:29286 SecondProject.Hoare <> Assertion def
+R29299:29299 SecondProject.SecondProject <> d:211 var
+R29310:29315 SecondProject.SecondProject SecondProject.DCom DCSkip constr
+R29343:29347 SecondProject.SecondProject SecondProject.DCom DCSeq constr
+R29370:29373 SecondProject.SecondProject <> post:212 def
+R29382:29387 SecondProject.SecondProject SecondProject.DCom DCAsgn constr
+R29415:29418 SecondProject.SecondProject SecondProject.DCom DCIf constr
+R29448:29454 SecondProject.SecondProject SecondProject.DCom DCWhile constr
+R29481:29485 SecondProject.SecondProject SecondProject.DCom DCPre constr
+R29508:29511 SecondProject.SecondProject <> post:212 def
+R29513:29513 SecondProject.SecondProject <> d:211 var
+R29519:29524 SecondProject.SecondProject SecondProject.DCom DCPost constr
+R29565:29572 SecondProject.SecondProject SecondProject.DCom DCAssert constr
+R29598:29605 SecondProject.SecondProject SecondProject.DCom DCAssume constr
+R29625:29628 Coq.Init.Logic <> True ind
+R29634:29647 SecondProject.SecondProject SecondProject.DCom DCNonDetChoice constr
+def 29682:29689 SecondProject.DCom post_dec
+R29698:29706 SecondProject.SecondProject SecondProject.DCom decorated ind
+binder 29692:29694 <> dec:214
+R29711:29719 SecondProject.Hoare <> Assertion def
+R29732:29734 SecondProject.SecondProject <> dec:214 var
+R29745:29753 SecondProject.SecondProject SecondProject.DCom Decorated constr
+R29762:29765 SecondProject.SecondProject SecondProject.DCom post def
+def 29785:29797 SecondProject.DCom pre_dec_while
+R29818:29820 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29801:29807 SecondProject.SecondProject SecondProject.DCom pre_dec def
+R29809:29817 SecondProject.SecondProject SecondProject.DCom dec_while ex
+R29821:29824 Coq.Init.Logic <> True ind
+def 29861:29874 SecondProject.DCom post_dec_while
+R29896:29898 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29878:29885 SecondProject.SecondProject SecondProject.DCom post_dec def
+R29887:29895 SecondProject.SecondProject SecondProject.DCom dec_while ex
+R29901:29903 SecondProject.Hoare <> ::assertion_scope:x_'='_x not
+R29900:29900 SecondProject.Imp <> X def
+def 30051:30068 SecondProject.DCom outer_triple_valid
+R30077:30085 SecondProject.SecondProject SecondProject.DCom decorated ind
+binder 30071:30073 <> dec:216
+R30093:30094 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30106:30108 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30124:30126 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30139:30140 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30095:30101 SecondProject.SecondProject SecondProject.DCom pre_dec def
+R30103:30105 SecondProject.SecondProject <> dec:216 var
+R30120:30120 SecondProject.Imp <> :com:com_scope:x_x_'..'_x not
+R30121:30123 SecondProject.SecondProject <> dec:216 var
+R30109:30119 SecondProject.SecondProject SecondProject.DCom extract_dec def
+R30127:30134 SecondProject.SecondProject SecondProject.DCom post_dec def
+R30136:30138 SecondProject.SecondProject <> dec:216 var
+def 30152:30175 SecondProject.DCom dec_while_triple_correct
+R30212:30222 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30184:30201 SecondProject.SecondProject SecondProject.DCom outer_triple_valid def
+R30203:30211 SecondProject.SecondProject SecondProject.DCom dec_while ex
+R30223:30225 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30230:30240 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30271:30279 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30285:30287 SecondProject.SecondProject SecondProject ::hoare_spec_scope:'{{'_x_'}}'_x_'{{'_x_'}}' not
+R30226:30229 Coq.Init.Logic <> True ind
+R30241:30246 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R30253:30256 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R30267:30270 SecondProject.SecondProject SecondProject :com:com_scope:'while'_x_'do'_x_'end' not
+R30248:30251 SecondProject.Imp <> :com::x_'<>'_x not
+R30247:30247 SecondProject.Imp <> X def
+R30258:30261 SecondProject.SecondProject SecondProject :com:com_scope:x_':='_x not
+R30257:30257 SecondProject.Imp <> X def
+R30263:30265 SecondProject.Imp <> :com::x_'-'_x not
+R30262:30262 SecondProject.Imp <> X def
+R30281:30283 SecondProject.Hoare <> ::assertion_scope:x_'='_x not
+R30280:30280 SecondProject.Imp <> X def
+def 33432:33454 SecondProject.DCom verification_conditions
+R33461:33469 SecondProject.Hoare <> Assertion def
+binder 33457:33457 <> P:217
+R33477:33480 SecondProject.SecondProject SecondProject.DCom dcom ind
+binder 33473:33473 <> d:218
+R33501:33501 SecondProject.SecondProject <> d:218 var
+R33512:33517 SecondProject.SecondProject SecondProject.DCom DCSkip constr
+R33532:33536 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33531:33531 SecondProject.SecondProject <> P:217 var
+R33544:33548 SecondProject.SecondProject SecondProject.DCom DCSeq constr
+R33593:33602 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33565:33587 SecondProject.SecondProject <> verification_conditions:219 def
+R33589:33589 SecondProject.SecondProject <> P:217 var
+R33603:33625 SecondProject.SecondProject <> verification_conditions:219 def
+R33628:33631 SecondProject.SecondProject SecondProject.DCom post def
+R33644:33649 SecondProject.SecondProject SecondProject.DCom DCAsgn constr
+R33651:33651 SecondProject.Imp <> X def
+R33668:33672 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33667:33667 SecondProject.SecondProject <> P:217 var
+R33674:33675 SecondProject.Hoare <> ::hoare_spec_scope:x_'['_x_'|->'_x_']' not
+R33677:33681 SecondProject.Hoare <> ::hoare_spec_scope:x_'['_x_'|->'_x_']' not
+R33683:33683 SecondProject.Hoare <> ::hoare_spec_scope:x_'['_x_'|->'_x_']' not
+R33690:33693 SecondProject.SecondProject SecondProject.DCom DCIf constr
+R33747:33756 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33721:33721 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33728:33733 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33723:33726 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R33722:33722 SecondProject.SecondProject <> P:217 var
+R33786:33795 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33758:33758 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33767:33772 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33760:33763 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R33759:33759 SecondProject.SecondProject <> P:217 var
+R33764:33765 SecondProject.Hoare <> ::assertion_scope:'~'_x not
+R33796:33796 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33810:33814 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33804:33808 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33797:33800 SecondProject.SecondProject SecondProject.DCom post def
+R33815:33815 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33829:33839 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33823:33827 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R33816:33819 SecondProject.SecondProject SecondProject.DCom post def
+R33869:33878 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R33840:33862 SecondProject.SecondProject <> verification_conditions:219 def
+R33879:33901 SecondProject.SecondProject <> verification_conditions:219 def
+R33913:33919 SecondProject.SecondProject SecondProject.DCom DCWhile constr
+R34025:34025 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34038:34048 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34027:34031 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34026:34026 SecondProject.SecondProject <> P:217 var
+R34032:34035 SecondProject.SecondProject SecondProject.DCom post def
+R34037:34037 SecondProject.SecondProject <> d:218 var
+R34085:34094 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34050:34050 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34063:34068 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34057:34061 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R34051:34054 SecondProject.SecondProject SecondProject.DCom post def
+R34056:34056 SecondProject.SecondProject <> d:218 var
+R34133:34142 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34096:34096 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34111:34116 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34103:34107 SecondProject.Hoare <> ::assertion_scope:x_'/\'_x not
+R34097:34100 SecondProject.SecondProject SecondProject.DCom post def
+R34102:34102 SecondProject.SecondProject <> d:218 var
+R34108:34109 SecondProject.Hoare <> ::assertion_scope:'~'_x not
+R34143:34165 SecondProject.SecondProject <> verification_conditions:219 def
+R34173:34173 SecondProject.SecondProject <> d:218 var
+R34179:34183 SecondProject.SecondProject SecondProject.DCom DCPre constr
+R34199:34199 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34208:34218 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34201:34205 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34200:34200 SecondProject.SecondProject <> P:217 var
+R34219:34241 SecondProject.SecondProject <> verification_conditions:219 def
+R34246:34246 SecondProject.SecondProject <> d:218 var
+R34252:34257 SecondProject.SecondProject SecondProject.DCom DCPost constr
+R34299:34309 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34322:34322 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R34272:34294 SecondProject.SecondProject <> verification_conditions:219 def
+R34298:34298 SecondProject.SecondProject <> d:218 var
+R34296:34296 SecondProject.SecondProject <> P:217 var
+R34316:34320 SecondProject.Hoare <> ::hoare_spec_scope:x_'->>'_x not
+R34310:34313 SecondProject.SecondProject SecondProject.DCom post def
+R34315:34315 SecondProject.SecondProject <> d:218 var
+R34341:34348 SecondProject.SecondProject SecondProject.DCom DCAssert constr
+R34350:34350 SecondProject.Smallstep <> P constr
