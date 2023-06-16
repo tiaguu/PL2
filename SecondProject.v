@@ -1023,11 +1023,13 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
       /\ (post d ->> Q)
   (* TODO *)
   | DCAssert a Q =>
-      (P ->> Q)
+      (P ->> a) /\ (P ->> Q)
   | DCAssume a Q =>
       (P ->> True)
   | DCNonDetChoice d1 d2 Q =>
-      verification_conditions Q d1 \/ verification_conditions Q d2
+      (post d1 ->> Q \/ post d2 ->> Q)
+      /\ verification_conditions P d1
+      /\ verification_conditions P d2
   end.
 
 (** The key theorem states that [verification_conditions] does its job
@@ -1076,6 +1078,7 @@ Proof.
     eapply hoare_consequence_post; eauto.
   (* TODO *)
   - (* Assert *)
+    destruct H as [H1 H2].
     eapply hoare_consequence_pre.
     + apply hoare_assert.
     + admit.
@@ -1083,8 +1086,12 @@ Proof.
     eapply hoare_consequence_pre.
     + apply hoare_assume.
     + eauto.
-  - (* Choice *)
-    + admit.
+  - (* Choice *)  
+    destruct H as [HP [HVD1 HVD2]].
+    eapply hoare_consequence in HP; eauto.
+    apply IHd1 in HVD1. clear IHd1.
+    apply IHd2 in HVD2. clear IHd2.
+    admit.
 Admitted.
 
 
