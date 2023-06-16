@@ -1375,18 +1375,33 @@ should not be changed. Note that the code below does
 not typecheck until you decorate it correctly. *)
 <{
   {{ X = m }}
-    while 2 <= X do
-      X := X - 2
-      !! 
-      X := X + 2
-    end
-  {{ X = parity m }} }>.
+    while (2 <= X) do {{ X = m /\ 2 <= X }}
+       X := X - 2
+       {{ X = m /\ 2 <= X - 2 }}
+       !!
+       X := X + 2
+       {{ X = m /\ 2 <= X }}
+     end
+     {{ X = parity m }} }>.
 
 
 Theorem parity_outer_triple_valid_nondet : forall m,
   outer_triple_valid (parity_dec_nondet m).
 Proof. 
-  (* TODO *)
+  intros m.
+  unfold parity_dec_nondet.
+  eapply (hoare_consequence _ _ _ (X = parity m)).
+  - eapply (hoare_while).
+    + eapply hoare_consequence_pre.
+      * eapply hoare_asgn.
+      * intros st [_ H]. simpl in H. assumption.
+    + eapply hoare_consequence_post.
+      * eapply hoare_asgn.
+      * intros st [_ H]. simpl in H.
+        destruct (2 <=? X) eqn:Heq.
+        -- rewrite parity_ge_2; assumption.
+        -- rewrite parity_lt_2; assumption.
+  - intros st H. assumption.
 Qed.
 
 
