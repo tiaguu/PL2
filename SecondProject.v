@@ -725,8 +725,8 @@ Inductive dcom : Type :=
   (* assert {{ b }} {{ Q }} *)
 | DCAssume (b : bexp) (Q : Assertion)
   (* assume {{ b }} {{ Q }} *)
-| DCNonDetChoice (d1 d2 : dcom) (Q : Assertion).
-  (* d1 !! d2 {{ Q }} *)
+| DCNonDetChoice (d1 : dcom)(P : Assertion)(d2 : dcom) (Q : Assertion).
+  (* d1 {{ P }} !! d2 {{ Q }} *)
 
 (** To provide the initial precondition that goes at the very top of a
     decorated program, we introduce a new type [decorated]: *)
@@ -774,10 +774,10 @@ Notation "'assert' {{ b }} {{ P }}"
 Notation "'assume' {{ b }} {{ P }}"
       := (DCAssume P b)
            (in custom com at level 0, P constr, b custom com at level 99) : dcom_scope.
-Notation "d1 '!!' d2 '{{' Q '}}'"
-      := (DCNonDetChoice d1 d2 Q)
-           (in custom com at level 92, right associativity,
-            Q constr at level 93) : dcom_scope.
+Notation "d1 {{' P '}} '!!' d2 '{{' Q '}}'"
+      := (DCNonDetChoice d1 P d2 Q)
+           (in custom com at level 92, right associativity, 
+P constr at level 93, Q constr at level 94) : dcom_scope.
 
 Local Open Scope dcom_scope.
 
@@ -817,7 +817,7 @@ Fixpoint extract (d : dcom) : com :=
   (* TODO *)
   | DCAssert a _       => CAssert a
   | DCAssume a _       => CAssume a
-  | DCNonDetChoice d1 d2 _ => CNonDetChoice (extract d1) (extract d2)
+  | DCNonDetChoice d1 _ d2 _ => CNonDetChoice (extract d1) (extract d2)
   end.
 
 Definition extract_dec (dec : decorated) : com :=
@@ -853,7 +853,7 @@ Fixpoint post (d : dcom) : Assertion :=
   (* TODO *)
   | DCAssert _ Q            => Q
   | DCAssume _ _            => True
-  | DCNonDetChoice _ _ Q    => Q
+  | DCNonDetChoice _ p d2 _    => p \/ post d2
   end.
 
 Definition post_dec (dec : decorated) : Assertion :=
@@ -1023,13 +1023,11 @@ Fixpoint verification_conditions (P : Assertion) (d : dcom) : Prop :=
       /\ (post d ->> Q)
   (* TODO *)
   | DCAssert a Q =>
-      (P ->> a) /\ (P ->> Q)
+      (P ->> Q)
   | DCAssume a Q =>
       (P ->> True)
-  | DCNonDetChoice d1 d2 Q =>
-      (post d1 ->> Q \/ post d2 ->> Q)
-      /\ verification_conditions P d1
-      /\ verification_conditions P d2
+  | DCNonDetChoice d1 P' d2 Q =>
+      verification_conditions P' d1 \/ verification_conditions P d2
   end.
 
 (** The key theorem states that [verification_conditions] does its job
@@ -1078,7 +1076,6 @@ Proof.
     eapply hoare_consequence_post; eauto.
   (* TODO *)
   - (* Assert *)
-    destruct H as [H1 H2].
     eapply hoare_consequence_pre.
     + apply hoare_assert.
     + admit.
@@ -1086,12 +1083,8 @@ Proof.
     eapply hoare_consequence_pre.
     + apply hoare_assume.
     + eauto.
-  - (* Choice *)  
-    destruct H as [HP [HVD1 HVD2]].
-    eapply hoare_consequence in HP; eauto.
-    apply IHd1 in HVD1. clear IHd1.
-    apply IHd2 in HVD2. clear IHd2.
-    admit.
+  - (* Choice *)
+    + admit.
 Admitted.
 
 
