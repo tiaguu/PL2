@@ -1394,21 +1394,22 @@ not typecheck until you decorate it correctly. *)
 Theorem parity_outer_triple_valid_nondet : forall m,
   outer_triple_valid (parity_dec_nondet m).
 Proof. 
-  intros m.
-  unfold parity_dec_nondet.
-  eapply (hoare_consequence _ _ _ (X = parity m)).
-  - eapply (hoare_while).
-    + eapply hoare_consequence_pre.
-      * eapply hoare_asgn.
-      * intros st [_ H]. simpl in H. assumption.
-    + eapply hoare_consequence_post.
-      * eapply hoare_asgn.
-      * intros st [_ H]. simpl in H.
-        destruct (2 <=? X) eqn:Heq.
-        -- rewrite parity_ge_2; assumption.
-        -- rewrite parity_lt_2; assumption.
-  - intros st H. assumption.
-Qed.
+  intros m. unfold parity_dec_nondet, outer_triple_valid.
+  eapply hoare_consequence with (P' := (fun st => st X = parity m)).
+
+  - eapply hoare_consequence_pre with (P' := (fun st => st X = m /\ 2 <= st X)).
+    + eapply hoare_while.
+      * admit.
+    + admit.
+
+  - intros st H. simpl in H.
+    unfold beval in H.
+    destruct (st X).
+    + simpl in H. inversion H. auto.
+    + destruct n.
+      * simpl in H. inversion H. auto.
+      * rewrite parity_lt_2; auto.
+Admitted.
 
 End DCom.
 
